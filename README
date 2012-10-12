@@ -1,0 +1,25 @@
+This is a collection of scripts to make downloading and building mpv, ffmpeg
+and libass easier. ffmpeg and libass get special treatment, because they are
+essential, and distribution packages are often too old.
+
+Update the ffmpeg, libass and mpv sources with the following command:
+
+    ./update
+
+This is also needed before doing the first build after the initial checkout.
+
+Build mpv and ffmpeg/libass with:
+
+    make mpv
+
+Install mpv with:
+
+    make install
+
+mpv doesn't need to be installed. The binary in ./mpv/ can be used as-is. Note
+that libass and ffmpeg will be statically linked with mpv when using the
+provided scripts.
+
+
+TODO:
+- List dependencies.

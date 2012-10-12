@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+OPTIONS=""
+
+BUILD="$(pwd)"
+cd "$BUILD"/libass
+./autogen.sh --prefix="$BUILD/build_libs" --enable-static --disable-shared $OPTIONS

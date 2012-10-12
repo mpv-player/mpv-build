@@ -1,0 +1,9 @@
+[submodule "mpv"]
+	path = mpv
+	url = https://github.com/mpv-player/mpv.git
+[submodule "ffmpeg"]
+	path = ffmpeg
+	url = git://git.videolan.org/ffmpeg.git
+[submodule "libass"]
+	path = libass
+	url = git://repo.or.cz/libass.git

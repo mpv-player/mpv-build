@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+OPTIONS="--enable-gpl --enable-nonfree"
+
+BUILD="$(pwd)"
+mkdir -p "$BUILD"/ffmpeg_build
+cd "$BUILD"/ffmpeg_build
+"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS
