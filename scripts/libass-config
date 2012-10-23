@@ -5,4 +5,4 @@ OPTIONS=""
 
 BUILD="$(pwd)"
 cd "$BUILD"/libass
-./autogen.sh --prefix="$BUILD/build_libs" --enable-static --disable-shared $OPTIONS
+./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
