@@ -3,7 +3,7 @@ Section: misc
 Priority: optional
 Maintainer: Wessel Dankers <wsl@fruit.je>
 Standards-Version: 3.9.3
-Build-Depends: libpng12-dev, zlib1g-dev, x11proto-core-dev, libx11-dev, libxext-dev, libxinerama-dev, libxv-dev, libfreetype6-dev, libfribidi-dev, libfontconfig1-dev, libgl1-mesa-dev, debhelper (>= 7), autoconf, libtool, yasm, libpulse-dev, libasound2-dev, libbluray-dev, python3-docutils, libdvdnav-dev
+Build-Depends: libjpeg-dev, libvdpau-dev, zlib1g-dev, x11proto-core-dev, libx11-dev, libxext-dev, libxinerama-dev, libxv-dev, libfreetype6-dev, libfribidi-dev, libfontconfig1-dev, libgl1-mesa-dev, debhelper (>= 7), autoconf, libtool, yasm, libpulse-dev, libasound2-dev, libbluray-dev, python3-docutils, libdvdnav-dev
 
 Package: mpv
 Architecture: any
