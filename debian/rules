@@ -1,0 +1,6 @@
+#! /usr/bin/make -f
+
+%:
+	exec dh $@ --parallel
+
+override_dh_auto_install:
