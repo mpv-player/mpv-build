@@ -5,4 +5,4 @@ OPTIONS=""
 
 BUILD="$(pwd)"
 cd "$BUILD"/mpv
-PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig ./configure --extra-cflags=-I"$BUILD"/build_libs/include --extra-ldflags=-L"$BUILD"/build_libs/lib $OPTIONS
+PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig ./configure --extra-cflags=-I"$BUILD"/build_libs/include --extra-ldflags=-L"$BUILD"/build_libs/lib $OPTIONS "$@"

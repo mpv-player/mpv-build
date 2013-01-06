@@ -8,5 +8,5 @@ Build-Depends: libjpeg-dev, libvdpau-dev, zlib1g-dev, x11proto-core-dev, libx11-
 Package: mpv
 Architecture: any
 Depends: ${shlibs:Depends},debconf
-Description: MPV video player
+Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.

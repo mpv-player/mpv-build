@@ -1,6 +1,12 @@
 #! /usr/bin/make -f
 
+build:
+	dh_testdir
+	$(MAKE) ffmpeg libass
+	scripts/mpv-config --prefix=/usr
+	$(MAKE) -C mpv
+
 %:
 	exec dh $@ --parallel
 
-override_dh_auto_install:
+override_dh_auto_build:
