@@ -19,7 +19,7 @@ Get the ffmpeg, libass and mpv sources with the following command:
     ./update
 
 (This is always needed before doing the first build after the initial checkout,
-and can be used later to update ffmpeg/libass/mpv later.)
+and can be used to update ffmpeg/libass/mpv later.)
 
 Build mpv and ffmpeg/libass with:
 
