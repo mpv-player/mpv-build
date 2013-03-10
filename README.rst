@@ -8,6 +8,13 @@ essential, and distribution packages are often too old or too broken.
 Instructions
 ============
 
+Make sure git is installed. E.g. on Debian or Ubuntu:
+
+    apt-get install git
+
+Also check that the dependencies listed at the end of this file are
+installed.
+
 Checkout the build repo:
 
     git clone https://github.com/mpv-player/mpv-build.git
@@ -44,7 +51,7 @@ Dependencies
 
 Essential dependencies (incomplete list):
 
-- gcc, yasm, git
+- gcc or clang, yasm, git
 - X development headers (xlib, X extensions, vdpau, GL, Xv, ...)
 - Audio output development headers (libasound, pulseaudio)
 - fribidi, freetype, fontconfig development headers (for libass)
@@ -64,4 +71,18 @@ the required dependencies:
 
 mpv has similar dependencies as mplayer, although there is some
 mismatch.
+
+You can also try this in the mpv-build directory:
+
+    mk-build-deps -s sudo -ir
+
+This will generate and install a dummy package with the required
+dependencies. If you don't want to use sudo, you can also try:
+
+    mk-build-deps
+    dpkg -i mpv-build-deps_1.0_all.deb
+
+dpkg -i will requires root rights of course.
+
+Read debian/README.debian if you want to create a mpv package.
 
