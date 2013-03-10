@@ -80,9 +80,10 @@ This will generate and install a dummy package with the required
 dependencies. If you don't want to use sudo, you can also try:
 
     mk-build-deps
+
     dpkg -i mpv-build-deps_1.0_all.deb
 
-dpkg -i will requires root rights of course.
+dpkg -i will require root rights of course.
 
 Read debian/README.debian if you want to create a mpv package.
 
