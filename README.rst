@@ -5,6 +5,12 @@ This is a collection of scripts to make downloading and building mpv, ffmpeg
 and libass easier. ffmpeg and libass get special treatment, because they are
 essential, and distribution packages are often too old or too broken.
 
+See below for instructions for building Debian packages.
+
+If you are running Mac OSX and using homebrew we provide homebrew-mpv_, an up
+to date formula that compiles mpv with sensible dependencies and defaults for
+OSX.
+
 Instructions
 ============
 
@@ -64,15 +70,11 @@ Note: most dependencies are optional and autodetected. If they're missing,
 these features will be disabled silently. This includes some dependencies
 which could be considered essential.
 
-On Debian or Ubuntu systems, you can use this command to get most of
-the required dependencies:
+Installing dependencies on Debian or Ubuntu
+===========================================
 
-    apt-get build-dep mplayer
-
-mpv has similar dependencies as mplayer, although there is some
-mismatch.
-
-You can also try this in the mpv-build directory:
+On Debian or Ubuntu systems, you can try to run this command in the
+mpv-build directory to install most of the required dependencies:
 
     mk-build-deps -s sudo -ir
 
@@ -85,5 +87,23 @@ dependencies. If you don't want to use sudo, you can also try:
 
 dpkg -i will require root rights of course.
 
-Read debian/README.debian if you want to create a mpv package.
+Building a Debian package
+=========================
 
+You can build a full mpv Debian package with the following command:
+
+    debuild -uc -us -b -j4
+
+The .deb file will be created in the parent directory. (4 is the number
+of jobs running in parallel - you can change it.)
+
+Contact
+=======
+
+You can find us on IRC in ``#mpv-player`` on ``irc.freenode.net``
+
+Report bugs to the `issues tracker`_ provided by GitHub to send us bug
+reports or feature requests.
+
+.. _issues tracker: https://github.com/mpv-player/mpv/issues
+.. _homebrew-mpv: https://github.com/mpv-player/homebrew-mpv

@@ -1,6 +1,6 @@
 mpv for Debian
 --------------
 
-  You can build the package using 'debuild -uc -b -j<number of jobs>'.
+  You can build the package using 'debuild -uc -us -b -j<number of jobs>'.
 
 -- Wessel Dankers <wsl@fruit.je>, Sun, 06 Jan 2013 13:44:11 +0100
