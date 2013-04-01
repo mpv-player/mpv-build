@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-OPTIONS="--enable-gpl --enable-nonfree --disable-debug --disable-doc"
+OPTIONS="--enable-gpl --enable-nonfree --enable-avresample --disable-debug --disable-doc"
 
 BUILD="$(pwd)"
 mkdir -p "$BUILD"/ffmpeg_build
