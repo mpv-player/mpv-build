@@ -6,4 +6,5 @@
 	url = git://source.ffmpeg.org/ffmpeg.git
 [submodule "libass"]
 	path = libass
-	url = git://repo.or.cz/libass.git
+	url = https://code.google.com/p/libass/
+
