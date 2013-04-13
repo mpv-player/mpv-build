@@ -97,6 +97,21 @@ You can build a full mpv Debian package with the following command:
 The .deb file will be created in the parent directory. (4 is the number
 of jobs running in parallel - you can change it.)
 
+Forcing master versions of all parts
+====================================
+
+The following command can be used to delete all local changes, and to checkout
+the current master versions for all parts (libass, ffmpeg, mpv, as well as
+mpv-build itself):
+
+    sh ./force-head
+
+All local modifications are overwritten (including changes to the scripts),
+and git master versions are checked out. Breakages/bugs are to be expected,
+because these are untested bleeding-edge development versions of the code.
+
+Use on your own risk.
+
 Contact
 =======
 
