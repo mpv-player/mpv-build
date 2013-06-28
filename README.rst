@@ -76,10 +76,14 @@ Installing dependencies on Debian or Ubuntu
 On Debian or Ubuntu systems, you can try to run this command in the
 mpv-build directory to install most of the required dependencies:
 
+    sudo apt-get install devscripts
+
     mk-build-deps -s sudo -ir
 
 This will generate and install a dummy package with the required
-dependencies. If you don't want to use sudo, you can also try:
+dependencies. (mk-build-deps is part of devscripts.)
+
+If you don't want to use sudo, you can also try:
 
     mk-build-deps
 
