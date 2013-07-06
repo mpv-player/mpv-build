@@ -1,5 +1,4 @@
-mpv: ffmpeg libass
-	scripts/mpv-config
+mpv: ffmpeg libass mpv-config
 	$(MAKE) -C mpv
 
 mpv-config:
