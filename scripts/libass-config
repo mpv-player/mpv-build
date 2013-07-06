@@ -5,4 +5,4 @@ OPTIONS=""
 
 BUILD="$(pwd)"
 cd "$BUILD"/libass
-PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig ./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
+PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig FRIBIDI_CFLAGS=-I"$BUILD"/build_libs/include ./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
