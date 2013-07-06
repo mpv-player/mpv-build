@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+OPTIONS=""
+
+BUILD="$(pwd)"
+cd "$BUILD"/fribidi
+./bootstrap
+./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS

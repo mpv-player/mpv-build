@@ -7,4 +7,6 @@
 [submodule "libass"]
 	path = libass
 	url = https://code.google.com/p/libass/
-
+[submodule "fribidi"]
+	path = fribidi
+	url = git://anongit.freedesktop.org/fribidi/fribidi.git
