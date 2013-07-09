@@ -63,12 +63,31 @@ Essential dependencies (incomplete list):
 - fribidi, freetype, fontconfig development headers (for libass)
 - libjpeg
 - libquvi if you want to play Youtube videos directly
-- libx264 if you want to use encoding (you have to add --enable-libx264 to
-  scripts/ffmpeg-config, because ffmpeg doesn't autodetect this library)
+- libx264/libmp3lame/libfdk-aac if you want to use encoding (you have to
+  add these options explicitly to the ffmpeg options, as ffmpeg won't
+  autodetect these libraries; see next section)
 
 Note: most dependencies are optional and autodetected. If they're missing,
 these features will be disabled silently. This includes some dependencies
 which could be considered essential.
+
+Enabling optional ffmpeg dependencies
+=====================================
+
+ffmpeg doesn't autodetect many dependencies. Instead, it requires you to
+enable them explicitly at configuration time. (And it will simply fail
+if the dependencies are not available.)
+
+You can put additional ffmpeg configure flags into ffmpeg_options. For
+example, to enable some dependencies needed for encoding:
+
+echo --enable-libx264    >> ffmpeg_options
+echo --enable-libmp3lame >> ffmpeg_options
+echo --enable-libfdk-aac >> ffmpeg_options
+echo --enable-nonfree    >> ffmpeg_options
+
+(Do this in the mpv-build toplevel directory, the same that contains
+the Makefile and this readme file.)
 
 Installing dependencies on Debian or Ubuntu
 ===========================================

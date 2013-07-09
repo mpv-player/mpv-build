@@ -1,14 +1,20 @@
 #!/bin/sh
 set -e
 
-OPTIONS="--enable-gpl --enable-avresample --disable-debug --disable-doc"
+BUILD="$(pwd)"
+
+if test -f "$BUILD"/ffmpeg_options ; then
+    USER_OPTS=$(cat "$BUILD"/ffmpeg_options)
+fi
+OPTIONS="--enable-gpl --enable-avresample --disable-debug --disable-doc $USER_OPTS"
 
 # optional flags for encoding (uncomment if you want to support these encoders)
 #OPTIONS="$OPTIONS --enable-libx264"
 #OPTIONS="$OPTIONS --enable-libmp3lame"
 #OPTIONS="$OPTIONS --enable-nonfree --enable-libfdk-aac"
 
-BUILD="$(pwd)"
+echo Using ffmpeg options: $OPTIONS
+
 mkdir -p "$BUILD"/ffmpeg_build
 cd "$BUILD"/ffmpeg_build
 "$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS
