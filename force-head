@@ -5,7 +5,8 @@ update_master() {
 }
 
 update_master
-( cd libass && update_master ; )
-( cd ffmpeg && update_master ; )
-( cd mpv    && update_master ; )
+( cd fribidi && update_master ; )
+( cd libass  && update_master ; )
+( cd ffmpeg  && update_master ; )
+( cd mpv     && update_master ; )
 
