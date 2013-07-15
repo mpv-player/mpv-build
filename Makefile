@@ -17,7 +17,7 @@ fribidi-config:
 fribidi: fribidi-config
 	$(MAKE) -C fribidi install
 
-libass-config: fribidi
+libass-config:
 	scripts/libass-config
 
 libass: libass-config
@@ -25,7 +25,7 @@ libass: libass-config
 
 noconfig:
 	$(MAKE) -C ffmpeg_build install
-	$(MAKE) -C fribidi install
+	#$(MAKE) -C fribidi install
 	$(MAKE) -C libass install
 	$(MAKE) -C mpv
 
@@ -34,7 +34,7 @@ install:
 
 clean:
 	-rm -rf ffmpeg_build build_libs
-	-$(MAKE) -C fribidi distclean
+	#-$(MAKE) -C fribidi distclean
 	-$(MAKE) -C libass distclean
 	-$(MAKE) -C mpv distclean
 
