@@ -81,10 +81,13 @@ if the dependencies are not available.)
 You can put additional ffmpeg configure flags into ffmpeg_options. For
 example, to enable some dependencies needed for encoding:
 
-echo --enable-libx264    >> ffmpeg_options
-echo --enable-libmp3lame >> ffmpeg_options
-echo --enable-libfdk-aac >> ffmpeg_options
-echo --enable-nonfree    >> ffmpeg_options
+    echo --enable-libx264    >> ffmpeg_options
+
+    echo --enable-libmp3lame >> ffmpeg_options
+
+    echo --enable-libfdk-aac >> ffmpeg_options
+
+    echo --enable-nonfree    >> ffmpeg_options
 
 (Do this in the mpv-build toplevel directory, the same that contains
 the Makefile and this readme file.)
