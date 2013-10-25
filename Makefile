@@ -32,10 +32,13 @@ noconfig:
 install:
 	$(MAKE) -C mpv install
 
+uninstall:
+	$(MAKE) -C mpv uninstall
+
 clean:
 	-rm -rf ffmpeg_build build_libs
 	#-$(MAKE) -C fribidi distclean
 	-$(MAKE) -C libass distclean
 	-$(MAKE) -C mpv distclean
 
-.PHONY: mpv-config mpv ffmpeg-config ffmpeg fribidi-config fribidi libass-config libass noconfig install clean
+.PHONY: mpv-config mpv ffmpeg-config ffmpeg fribidi-config fribidi libass-config libass noconfig install uninstall clean
