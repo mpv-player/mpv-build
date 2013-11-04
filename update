@@ -13,6 +13,7 @@ do_gitmaster()
 {
 	set -ex
 	git submodule foreach 'git checkout master'
+	git submodule foreach 'git pull'
 	git submodule foreach 'git remote prune origin'
 }
 
