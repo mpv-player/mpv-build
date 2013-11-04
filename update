@@ -13,7 +13,7 @@ do_gitmaster()
 {
 	set -ex
 	git submodule foreach 'git checkout master'
-	git submodule foreach 'git pull'
+	git submodule foreach 'git pull --rebase'
 	git submodule foreach 'git remote prune origin'
 }
 
@@ -40,7 +40,7 @@ do_releasetag()
 if [ x"$1" != x"--skip-selfupdate" ]; then
 	(
 		set -ex
-		git pull
+		git pull --rebase
 	)
 	exec "$0" --skip-selfupdate "$@"
 fi
