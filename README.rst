@@ -123,6 +123,18 @@ You can build a full mpv Debian package with the following command:
 The .deb file will be created in the parent directory. (4 is the number
 of jobs running in parallel - you can change it.)
 
+Local changes to the git repositories
+=====================================
+
+Making local changes to the created git repositories is generally discouraged.
+Updating might remove local changes or conflict with them. Sometimes the
+repositories might be wiped entirely. If you make local changes, always keep
+them in a separate repository and merge them after updating.
+
+In general, changes to the mpv-build repository itself are relatively safe,
+keeping branches in sub-repositories might be ok, and making local, uncommitted
+changes in sub-repositories will break.
+
 Forcing master versions of all parts
 ====================================
 
