@@ -1,63 +1,94 @@
 #!/bin/sh
 
-do_submodules()
+set -e
+
+# Extremely generic helper.
+verbose()
 {
-	set -ex
-	echo >&2 "Executing: git submodule sync"
-	git submodule sync
-	echo >&2 "Executing: git submodule update --init"
-	git submodule update --init
+	echo >&2 "$PWD\$ $*"
+	"$@"
 }
 
+# Repository configuration.
+allrepos()
+{
+	#     subdir    tagprefix \
+	#	url
+	"$@" 'ffmpeg'  'n' \
+		'git://source.ffmpeg.org/ffmpeg.git'
+	"$@" 'fribidi' '' \
+		'git://anongit.freedesktop.org/fribidi/fribidi.git'
+	"$@" 'libass'  '' \
+		'https://code.google.com/p/libass/'
+	"$@" 'mpv'     'v' \
+		'https://github.com/mpv-player/mpv.git'
+}
+
+# Shorthand for simple commands that just are run in the subdirectory.
+car()
+{
+	echo "$1"
+}
+foreach()
+{
+	for repo in `allrepos car`; do
+		cd "$repo"
+		"$@"
+		cd ..
+	done
+}
+
+# Clone all missing repositories.
+do_prepare_repo()
+{
+	if ! [ -d "$1" ]; then
+		verbose git clone "$3" "$1"
+	fi
+}
+do_prepare()
+{
+	allrepos do_prepare_repo
+}
+
+# Switch all repositories to master, and fetch/pull.
 do_gitmaster()
 {
-	set -ex
-	git submodule foreach 'git checkout master'
-	git submodule foreach 'git pull --rebase'
-	git submodule foreach 'git remote prune origin'
+	do_prepare
+	foreach verbose git checkout master
+	foreach verbose git pull --rebase
+	foreach verbose git remote prune origin
 }
 
-do_releasetag_submodule()
+# Switch all repositories to the latest release tag.w
+do_releasetag_repo()
 {
-	(
-		cd "$1"
-		version=`git tag | grep "^$2[0-9]" | sort -V | tail -n 1`
-		git checkout --detach refs/tags/"$version"
-	)
+	cd "$1"
+	version=`git tag | grep "^$2[0-9]" | sort -V | tail -n 1`
+	verbose git checkout --detach refs/tags/"$version"
+	cd ..
 }
-
 do_releasetag()
 {
-	set -ex
-	git submodule foreach 'git fetch'
-	git submodule foreach 'git remote prune origin'
-	do_releasetag_submodule ffmpeg  'n'
-	do_releasetag_submodule fribidi ''
-	do_releasetag_submodule libass  ''
-	do_releasetag_submodule mpv     'v'
+	do_prepare
+	foreach verbose git fetch
+	foreach verbose git remote prune origin
+	allrepos do_releasetag_repo
 }
 
 if [ x"$1" != x"--skip-selfupdate" ]; then
-	(
-		set -ex
-		git pull --rebase
-	)
+	verbose git pull --rebase
 	exec "$0" --skip-selfupdate "$@"
 fi
 shift
 
 case "$1" in
-	--submodule|'')
-		do_submodules
-		;;
 	--master)
 		do_gitmaster
 		;;
-	--release)
+	--release|'')
 		do_releasetag
 		;;
 	*)
-		echo >&2 "$0 --submodule"
 		echo >&2 "$0 --master"
 		echo >&2 "$0 --release"
 		exit 0
