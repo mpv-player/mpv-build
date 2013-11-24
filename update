@@ -2,64 +2,64 @@
 
 do_submodules()
 {
-	set -ex
-	echo >&2 "Executing: git submodule sync"
-	git submodule sync
-	echo >&2 "Executing: git submodule update --init"
-	git submodule update --init
+    set -ex
+    echo >&2 "Executing: git submodule sync"
+    git submodule sync
+    echo >&2 "Executing: git submodule update --init"
+    git submodule update --init
 }
 
 do_gitmaster()
 {
-	set -ex
-	git submodule foreach 'git checkout master'
-	git submodule foreach 'git pull --rebase'
-	git submodule foreach 'git remote prune origin'
+    set -ex
+    git submodule foreach 'git checkout master'
+    git submodule foreach 'git pull --rebase'
+    git submodule foreach 'git remote prune origin'
 }
 
 do_releasetag_submodule()
 {
-	(
-		cd "$1"
-		version=`git tag | grep "^$2[0-9]" | sort -V | tail -n 1`
-		git checkout --detach refs/tags/"$version"
-	)
+    (
+        cd "$1"
+        version=`git tag | grep "^$2[0-9]" | sort -V | tail -n 1`
+        git checkout --detach refs/tags/"$version"
+    )
 }
 
 do_releasetag()
 {
-	set -ex
-	git submodule foreach 'git fetch'
-	git submodule foreach 'git remote prune origin'
-	do_releasetag_submodule ffmpeg  'n'
-	do_releasetag_submodule fribidi ''
-	do_releasetag_submodule libass  ''
-	do_releasetag_submodule mpv     'v'
+    set -ex
+    git submodule foreach 'git fetch'
+    git submodule foreach 'git remote prune origin'
+    do_releasetag_submodule ffmpeg  'n'
+    do_releasetag_submodule fribidi ''
+    do_releasetag_submodule libass  ''
+    do_releasetag_submodule mpv     'v'
 }
 
 if [ x"$1" != x"--skip-selfupdate" ]; then
-	(
-		set -ex
-		git pull --rebase
-	)
-	exec "$0" --skip-selfupdate "$@"
+    (
+        set -ex
+        git pull --rebase
+    )
+    exec "$0" --skip-selfupdate "$@"
 fi
 shift
 
 case "$1" in
-	--submodule|'')
-		do_submodules
-		;;
-	--master)
-		do_gitmaster
-		;;
-	--release)
-		do_releasetag
-		;;
-	*)
-		echo >&2 "$0 --submodule"
-		echo >&2 "$0 --master"
-		echo >&2 "$0 --release"
-		exit 0
-		;;
+    --submodule|'')
+        do_submodules
+        ;;
+    --master)
+        do_gitmaster
+        ;;
+    --release)
+        do_releasetag
+        ;;
+    *)
+        echo >&2 "$0 --submodule"
+        echo >&2 "$0 --master"
+        echo >&2 "$0 --release"
+        exit 0
+        ;;
 esac
