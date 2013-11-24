@@ -1,23 +1,42 @@
 #!/bin/sh
 
-do_submodules()
+do_clone()
 {
     set -ex
-    echo >&2 "Executing: git submodule sync"
-    git submodule sync
-    echo >&2 "Executing: git submodule update --init"
-    git submodule update --init
+    if ! test -e "$1" ; then
+        git clone "$2" "$1"
+    fi
+}
+
+do_clone_all()
+{
+    do_clone "ffmpeg"   "git://source.ffmpeg.org/ffmpeg.git"
+    do_clone "fribidi"  "git://anongit.freedesktop.org/fribidi/fribidi.git"
+    do_clone "libass"   "https://code.google.com/p/libass/"
+    do_clone "mpv"      "https://github.com/mpv-player/mpv.git"
 }
 
 do_gitmaster()
 {
     set -ex
-    git submodule foreach 'git checkout master'
-    git submodule foreach 'git pull --rebase'
-    git submodule foreach 'git remote prune origin'
+    (
+        cd "$1"
+        git checkout --detach origin/master
+        git remote prune origin
+    )
 }
 
-do_releasetag_submodule()
+do_gitmaster_all()
+{
+    set -ex
+    do_clone_all
+    do_gitmaster ffmpeg
+    do_gitmaster fribidi
+    do_gitmaster libass
+    do_gitmaster mpv
+}
+
+do_releasetag()
 {
     (
         cd "$1"
@@ -26,15 +45,14 @@ do_releasetag_submodule()
     )
 }
 
-do_releasetag()
+do_releasetag_all()
 {
     set -ex
-    git submodule foreach 'git fetch'
-    git submodule foreach 'git remote prune origin'
-    do_releasetag_submodule ffmpeg  'n'
-    do_releasetag_submodule fribidi ''
-    do_releasetag_submodule libass  ''
-    do_releasetag_submodule mpv     'v'
+    do_clone_all
+    do_releasetag ffmpeg  'n'
+    do_releasetag fribidi ''
+    do_releasetag libass  ''
+    do_releasetag mpv     'v'
 }
 
 if [ x"$1" != x"--skip-selfupdate" ]; then
@@ -47,17 +65,13 @@ fi
 shift
 
 case "$1" in
-    --submodule|'')
-        do_submodules
-        ;;
     --master)
-        do_gitmaster
+        do_gitmaster_all
         ;;
-    --release)
-        do_releasetag
+    --release|'')
+        do_releasetag_all
         ;;
     *)
-        echo >&2 "$0 --submodule"
         echo >&2 "$0 --master"
         echo >&2 "$0 --release"
         exit 0
