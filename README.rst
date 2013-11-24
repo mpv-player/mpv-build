@@ -130,7 +130,7 @@ The following command can be used to delete all local changes, and to checkout
 the current master versions for all parts (libass, ffmpeg, mpv, as well as
 mpv-build itself):
 
-    sh ./force-head
+    ./update --master
 
 All local modifications are overwritten (including changes to the scripts),
 and git master versions are checked out. Breakages/bugs are to be expected,
