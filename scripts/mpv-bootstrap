@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+cd mpv
+
+if [ -x "bootstrap.py" ]; then
+  ./bootstrap.py $@
+fi
+

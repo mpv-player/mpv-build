@@ -55,6 +55,11 @@ do_releasetag_all()
     do_releasetag mpv     'v'
 }
 
+do_bootstrap()
+{
+  scripts/mpv-bootstrap
+}
+
 if [ x"$1" != x"--skip-selfupdate" ]; then
     (
         set -ex
@@ -77,3 +82,5 @@ case "$1" in
         exit 0
         ;;
 esac
+
+do_bootstrap
