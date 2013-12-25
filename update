@@ -37,10 +37,16 @@ do_releasetag()
 	do_releasetag_submodule mpv     'v'
 }
 
+do_bootstrap()
+{
+  scripts/mpv-bootstrap
+}
+
 if [ x"$1" != x"--skip-selfupdate" ]; then
 	(
 		set -ex
 		git pull --rebase
+
 	)
 	exec "$0" --skip-selfupdate "$@"
 fi
@@ -63,3 +69,5 @@ case "$1" in
 		exit 0
 		;;
 esac
+
+do_bootstrap

@@ -4,8 +4,10 @@
 	exec dh $@ --parallel
 
 override_dh_auto_build:
-	$(MAKE) ffmpeg 
-	$(MAKE) libass
+	scripts/ffmpeg-config
+	scripts/ffmpeg-build
+	scripts/libass-config
+	scripts/libass-build
 	scripts/mpv-config --prefix=/usr
-	$(MAKE) -C mpv
+	scripts/mpv-build
 
