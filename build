@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+scripts/ffmpeg-config
+scripts/ffmpeg-build $@
+scripts/libass-config
+scripts/libass-build $@
+scripts/mpv-config
+scripts/mpv-build $@

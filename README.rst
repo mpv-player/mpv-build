@@ -36,19 +36,15 @@ and can be used to update ffmpeg/libass/mpv later.)
 
 Build mpv and ffmpeg/libass with:
 
-    make clean                        # sometimes needed to build successfully
+    ./clean                        # sometimes needed to build successfully
 
-    make
+    ./build
 
 Install mpv with:
 
-    sudo make install
+    sudo ./install
 
-Or if you don't want debugging symbols (smaller binaries):
-
-    sudo make install-strip
-
-mpv doesn't need to be installed. The binary ./mpv/mpv can be used as-is. Note
+mpv doesn't need to be installed. The binary ./mpv/build/mpv can be used as-is. Note
 that libass and ffmpeg will be statically linked with mpv when using the
 provided scripts, and no ffmpeg or libass libraries are/need to be installed.
 
@@ -90,7 +86,7 @@ example, to enable some dependencies needed for encoding:
     echo --enable-nonfree    >> ffmpeg_options
 
 (Do this in the mpv-build toplevel directory, the same that contains
-the Makefile and this readme file.)
+the build scripts and this readme file.)
 
 Installing dependencies on Debian or Ubuntu
 ===========================================
