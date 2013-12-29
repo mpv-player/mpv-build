@@ -146,6 +146,8 @@ because these are untested bleeding-edge development versions of the code.
 
 Use on your own risk.
 
+(Note: in earlier mpv-build revisions, the script ``force-head`` did this.)
+
 Contact
 =======
 
