@@ -1,6 +1,6 @@
 #!/bin/sh
 
 scripts/ffmpeg-clean
-rm -rf build_libs
 scripts/libass-clean
 scripts/mpv-clean
+rm -rf build_libs
