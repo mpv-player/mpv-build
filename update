@@ -40,7 +40,11 @@ do_releasetag()
 {
     (
         cd "$1"
-        version=`git tag | grep "^$2[0-9]" | sort -V | tail -n 1`
+        if [ "$1" == "ffmpeg" ]; then
+            version=`git tag | grep "^n[0-9]" | sort -t. | tail -n 1`
+        else
+            version=`git tag | grep "^$2[0-9]" | sort -t. -n -k1,1 -k2,2 -k3,3 | tail -n 1`
+        fi
         git checkout --detach refs/tags/"$version"
     )
 }
