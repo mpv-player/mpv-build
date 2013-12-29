@@ -26,18 +26,17 @@ Checkout the build repo:
 
     cd mpv-build
 
-Get the ffmpeg, libass and mpv sources with the following command:
+Get the ffmpeg, libass and mpv sources  and build them with:
 
-    ./update
+    ./rebuild -j4
 
-(This is always needed before doing the first build after the initial checkout,
-and can be used to update ffmpeg/libass/mpv later.)
+The ``-j4`` asks it to use 4 parallel processes.
 
-Build mpv and ffmpeg/libass with:
-
-    ./clean                        # sometimes needed to build successfully
-
-    ./build
+Note that this command implicitly does an update followed by a full cleanup
+(even if nothing changes), which is supposed to reduce possible problems with
+incremental builds. You can do incremental builds by explicitly calling
+``./build``. This can be faster on minor updates, but breaks sometimes, e.g.
+the FFmpeg build system can sometimes be a bit glitchy.
 
 Install mpv with:
 
