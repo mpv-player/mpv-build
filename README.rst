@@ -18,8 +18,7 @@ Make sure git is installed. E.g. on Debian or Ubuntu:
 
     apt-get install git
 
-Also check that the dependencies listed at the end of this file are
-installed.
+Also check that the dependencies listed at in the next section are installed.
 
 Checkout the build repo:
 
