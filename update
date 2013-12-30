@@ -36,11 +36,21 @@ do_gitmaster_all()
     do_gitmaster mpv
 }
 
+versort_with_prefix()
+{
+	# Emulate sort -V using a known prefix. Filter out anything else.
+	sed -n -e "s/^$1\([0-9]\)/\\1/p" |\
+		sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 |\
+		sed -e "s/^/$1/"
+	# GNU version of the same:
+	# grep "^$2[0-9]" | sort -V
+}
+
 do_releasetag()
 {
     (
         cd "$1"
-        version=`git tag | grep "^$2[0-9]" | sort -V | tail -n 1`
+        version=`git tag | versort_with_prefix "$2" | tail -n 1`
         git checkout --detach refs/tags/"$version"
     )
 }
