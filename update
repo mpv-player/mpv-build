@@ -6,6 +6,10 @@ do_clone()
     if ! test -e "$1" ; then
         git clone "$2" "$1"
     fi
+    (
+        cd "$1"
+        git fetch
+    )
 }
 
 do_clone_all()
