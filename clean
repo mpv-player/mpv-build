@@ -1,6 +1,7 @@
 #!/bin/sh
 
 scripts/ffmpeg-clean
+scripts/fribidi-clean
 scripts/libass-clean
 scripts/mpv-clean
 rm -rf build_libs
