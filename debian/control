@@ -20,6 +20,7 @@ Build-Depends:
  libenca-dev,
  libfontconfig-dev,
  libfreetype6-dev,
+ libfribidi-dev,
  libgl1-mesa-dev,
  libguess-dev,
  libjack-dev,

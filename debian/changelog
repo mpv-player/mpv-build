@@ -1,7 +1,6 @@
 mpv (1:0.3.3) UNRELEASED; urgency=low
 
   * reimagine for waf build system
-  * build fribidi for the debian package
   * test building on saucy,precise,stable,sid amd64
   * enable as many mpv features as possible except:
     + libsdl2 (not available in wheezy or precise)
