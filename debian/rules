@@ -1,5 +1,17 @@
 #! /usr/bin/make -f
 
+# This alters the return value of dpkg-buildflags for CFLAGS and friends.
+# It is necessary to build fribidi which has an insecure print(stringvar)
+# statement. I believe there is something equivalent going on in the
+# libfribidi0=0.19.6-1 package source which is far less obvious. There
+# should probably be a patch for fribidi to fix this if possible.
+export DEB_BUILD_MAINT_OPTIONS=hardening=-format
+
+# from official debian package: testing welcome!
+ifeq ($(DEB_HOST_ARCH_CPU),$(filter $(DEB_HOST_ARCH_CPU),powerpc sparc))
+	export CC=gcc-4.8 # fixes #73363
+endif
+
 # make .PHONY all the targets that have name collisions with the scripts
 # see http://www.debian.org/doc/manuals/maint-guide/dreq.en.html#rules
 .PHONY: clean build install
@@ -14,26 +26,37 @@ install:
 %:
 	exec dh $@ --parallel
 
+# this should really create multiple shared object debian packages but
+# this will do for now
+
+# the dependencies must be built before mpv is configured
+fribidi_config:
+	scripts/fribidi-config
+fribidi_build:fribidi_config
+	scripts/fribidi-build
 ffmpeg_config:
 	scripts/ffmpeg-config
 ffmpeg_build:ffmpeg_config
 	scripts/ffmpeg-build 
-libass_config:
+libass_config:fribidi_build
 	scripts/libass-config
 libass_build:libass_config
 	scripts/libass-build
 
-# the dependencies must be built before mpv is configured
-override_dh_auto_configure:ffmpeg_build libass_build
-	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv
+# put the config in the right place and drop the local/ since it's package managed now
+override_dh_auto_configure:ffmpeg_build libass_build fribidi_build
+	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv 
 
 override_dh_auto_build:
 	scripts/mpv-build
 
+# call waf to install to the debian packageing dir
 override_dh_auto_install:
 	(cd mpv;python ./waf -v install --destdir=../debian/mpv)
 
+#call all the cleans
 override_dh_auto_clean:
 	scripts/mpv-clean
 	scripts/ffmpeg-clean
 	scripts/libass-clean
+	scripts/fribidi-clean 

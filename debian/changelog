@@ -1,3 +1,19 @@
+mpv (1:0.3.3) UNRELEASED; urgency=low
+
+  * reimagine for waf build system
+  * build fribidi for the debian package
+  * test building on saucy,precise,stable,sid amd64
+  * enable as many mpv features as possible except:
+    + libsdl2 (not available in wheezy or precise)
+    + libmpeg123 (build error on precise due to old version)
+    + caca, radio interface, openal output, portaudio output,
+      rsound/libroar/sndio input/output, sdl1, joystick, videoio.h/libpt
+  * additional ffmpeg features (and dependencies) are still to be handled
+    manually by the builder using the ffmpeg_options file as described
+    in README.rst
+
+ -- Kevin Mitchell <kevmitch@gmail.com>  Tue, 28 Jan 2014 04:59:52 -0800
+
 mpv (1.0git) stable; urgency=low
 
   * Initial package.

@@ -3,7 +3,51 @@ Section: misc
 Priority: optional
 Maintainer: Wessel Dankers <wsl@fruit.je>
 Standards-Version: 3.9.3
-Build-Depends: c-compiler, libjpeg-dev, libvdpau-dev, zlib1g-dev, x11proto-core-dev, libx11-dev, libxext-dev, libxinerama-dev, libxv-dev, libfreetype6-dev, libfribidi-dev, libfontconfig1-dev, libgl1-mesa-dev, debhelper (>= 7), autoconf, automake, libtool, yasm, libpulse-dev, libasound2-dev, libbluray-dev, python3-docutils, libdvdread-dev
+Build-Depends:
+ autoconf,
+ automake,
+ c-compiler,
+ debhelper (>= 7),
+ gcc-4.8 [powerpc powerpcspe sparc],
+ ladspa-sdk,
+ libasound2-dev [linux-any],
+ libbluray-dev,
+ libbs2b-dev,
+ libcdio-paranoia-dev,
+ libdvdnav-dev,
+ libdvdread-dev,
+ libegl1-mesa-dev [linux-any],
+ libenca-dev,
+ libfontconfig-dev,
+ libfreetype6-dev,
+ libgl1-mesa-dev,
+ libguess-dev,
+ libjack-dev,
+ libjpeg-dev,
+ liblcms2-dev,
+ liblircclient-dev,
+ liblua5.1-0-dev,
+ libncurses5-dev,
+ libncursesw5-dev,
+ libpulse-dev,
+ libquvi-dev,
+ libsmbclient-dev,
+ libtool,
+ libv4l-dev,
+ libva-dev,
+ libvdpau-dev,
+ libwayland-dev [linux-any],
+ libx11-dev,
+ libxext-dev,
+ libxinerama-dev,
+ libxss-dev,
+ libxv-dev,
+ pkg-config,
+ python,
+ python-docutils,
+ x11proto-core-dev,
+ yasm,
+ zlib1g-dev
 
 Package: mpv
 Architecture: any
