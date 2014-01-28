@@ -1,13 +1,39 @@
 #! /usr/bin/make -f
 
+# make .PHONY all the targets that have name collisions with the scripts
+# see http://www.debian.org/doc/manuals/maint-guide/dreq.en.html#rules
+.PHONY: clean build install
+# Apparently, the above isn't enough because of the "%" target. Make the problematic targets explicit
+clean:
+	exec dh $@ --parallel
+build:
+	exec dh $@ --parallel
+install:
+	exec dh $@ --parallel
+# handle all other targets in the usual way
 %:
 	exec dh $@ --parallel
 
-override_dh_auto_build:
+ffmpeg_config:
 	scripts/ffmpeg-config
-	scripts/ffmpeg-build
+ffmpeg_build:ffmpeg_config
+	scripts/ffmpeg-build 
+libass_config:
 	scripts/libass-config
+libass_build:libass_config
 	scripts/libass-build
-	scripts/mpv-config --prefix=/usr
+
+# the dependencies must be built before mpv is configured
+override_dh_auto_configure:ffmpeg_build libass_build
+	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv
+
+override_dh_auto_build:
 	scripts/mpv-build
 
+override_dh_auto_install:
+	(cd mpv;python ./waf -v install --destdir=../debian/mpv)
+
+override_dh_auto_clean:
+	scripts/mpv-clean
+	scripts/ffmpeg-clean
+	scripts/libass-clean
