@@ -5,6 +5,8 @@ This is a collection of scripts to make downloading and building mpv, ffmpeg
 and libass easier. ffmpeg and libass get special treatment, because they are
 essential, and distribution packages are often too old or too broken.
 
+See below for instructions for building Debian packages.
+
 If you are running Mac OSX and using homebrew we provide homebrew-mpv_, an up
 to date formula that compiles mpv with sensible dependencies and defaults for
 OSX.
@@ -83,6 +85,44 @@ example, to enable some dependencies needed for encoding:
 
 (Do this in the mpv-build toplevel directory, the same that contains
 the build scripts and this readme file.)
+
+Installing dependencies on Debian or Ubuntu
+===========================================
+
+On Debian or Ubuntu systems, you can try to run this command in the
+mpv-build directory to install most of the required dependencies:
+
+    sudo apt-get install devscripts equivs
+
+    mk-build-deps -s sudo -i
+
+This will generate and install a dummy package with the required
+dependencies. (mk-build-deps is part of devscripts.)
+
+If you don't want to use sudo, you can also try:
+
+    mk-build-deps
+
+    dpkg -i mpv-build-deps_1.0_all.deb
+
+    apt-get install -f
+
+dpkg and apt-get will require root rights of course.
+
+Building a Debian package
+=========================
+
+First make sure that you have the latest version of mpv and its
+dependencies:
+
+    ./update
+
+You can then build a full mpv Debian package with the following command:
+
+    debuild -uc -us -b -j4
+
+The .deb file will be created in the parent directory. (4 is the number
+of jobs running in parallel - you can change it.)
 
 Local changes to the git repositories
 =====================================

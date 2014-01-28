@@ -1,3 +1,5 @@
 #!/bin/sh
 
-make -C fribidi distclean
+if [ -f fribidi/Makefile ];then
+    make -C fribidi distclean
+fi
