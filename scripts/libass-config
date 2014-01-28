@@ -5,4 +5,7 @@ OPTIONS=""
 
 BUILD="$(pwd)"
 cd "$BUILD"/libass
+# Later libass doesn't automatically run configure with autogen.sh anymore
 PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig ./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
+PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig ./configure  --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
+
