@@ -1,0 +1,57 @@
+Source: mpv
+Section: misc
+Priority: optional
+Maintainer: Wessel Dankers <wsl@fruit.je>
+Standards-Version: 3.9.3
+Build-Depends:
+ autoconf,
+ automake,
+ c-compiler,
+ debhelper (>= 7),
+ gcc-4.8 [powerpc powerpcspe sparc],
+ ladspa-sdk,
+ libasound2-dev [linux-any],
+ libbluray-dev,
+ libbs2b-dev,
+ libcdio-paranoia-dev,
+ libdvdnav-dev,
+ libdvdread-dev,
+ libegl1-mesa-dev [linux-any],
+ libenca-dev,
+ libfontconfig-dev,
+ libfreetype6-dev,
+ libfribidi-dev,
+ libgl1-mesa-dev,
+ libguess-dev,
+ libjack-dev,
+ libjpeg-dev,
+ liblcms2-dev,
+ liblircclient-dev,
+ liblua5.1-0-dev,
+ libncurses5-dev,
+ libncursesw5-dev,
+ libpulse-dev,
+ libquvi-dev,
+ libsmbclient-dev,
+ libtool,
+ libv4l-dev,
+ libva-dev,
+ libvdpau-dev,
+ libwayland-dev [linux-any],
+ libx11-dev,
+ libxext-dev,
+ libxinerama-dev,
+ libxss-dev,
+ libxv-dev,
+ pkg-config,
+ python,
+ python-docutils,
+ x11proto-core-dev,
+ yasm,
+ zlib1g-dev
+
+Package: mpv
+Architecture: any
+Depends: ${shlibs:Depends},debconf
+Description: mplayer/mplayer2 based video player
+ MPV is a versatile CLI movie player, based on mplayer and mplayer2.
