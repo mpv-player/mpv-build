@@ -17,7 +17,7 @@ do_clone_all()
 {
     do_clone "ffmpeg"   "https://github.com/FFmpeg/FFmpeg.git"
     do_clone "fribidi"  "http://anongit.freedesktop.org/git/fribidi/fribidi.git"
-    do_clone "libass"   "https://code.google.com/p/libass/"
+    do_clone "libass"   "https://github.com/libass/libass.git"
     do_clone "mpv"      "https://github.com/mpv-player/mpv.git"
 }
 
