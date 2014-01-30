@@ -1,3 +1,10 @@
+mpv (1:0.3.3-1) UNRELEASED; urgency=medium
+
+  * enable libx264 and libmp3lame in ffmpeg build
+  * make building on multiple cores actually work
+
+ -- Kevin Mitchell <kevmitch@gmail.com>  Wed, 29 Jan 2014 18:46:08 -0800
+
 mpv (1:0.3.3) UNRELEASED; urgency=low
 
   * reimagine for waf build system
