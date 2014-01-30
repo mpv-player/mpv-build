@@ -4,3 +4,12 @@ mpv for Debian
   You can build the package using 'debuild -uc -us -b -j<number of jobs>'.
 
 -- Wessel Dankers <wsl@fruit.je>, Sun, 06 Jan 2013 13:44:11 +0100
+
+  libx264 and libmp3lame are already enabled. To enable
+  non-free codecs, install libfdk-aac-dev and add the options to the
+  mpv-build/ffmpeg_options file
+
+    echo --enable-libfdk-aac >> ffmpeg_options
+    echo --enable-nonfree    >> ffmpeg_options
+
+-- Kevin Mitchell <kevmitch@gmail.com>  Wed, 29 Jan 2014 19:21:44 -0800
