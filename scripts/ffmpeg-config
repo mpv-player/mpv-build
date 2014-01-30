@@ -3,8 +3,9 @@ set -e
 
 BUILD="$(pwd)"
 
+USER_OPTS="$@"
 if test -f "$BUILD"/ffmpeg_options ; then
-    USER_OPTS=$(cat "$BUILD"/ffmpeg_options)
+    USER_OPTS="$(cat "$BUILD"/ffmpeg_options) $USER_OPTS"
 fi
 OPTIONS="--enable-gpl --enable-avresample --disable-debug --disable-doc $USER_OPTS"
 
