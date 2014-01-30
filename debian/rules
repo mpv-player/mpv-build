@@ -25,26 +25,29 @@ install:
 # the dependencies must be built before mpv is configured
 ffmpeg_config:
 	scripts/ffmpeg-config
-ffmpeg_build:ffmpeg_config
+
+ffmpeg_build: ffmpeg_config
 	scripts/ffmpeg-build 
+
 libass_config:
 	scripts/libass-config
-libass_build:libass_config
+
+libass_build: libass_config
 	scripts/libass-build
 
 # put the config in the right place and drop the local/ since it's package managed now
-override_dh_auto_configure:ffmpeg_build libass_build
+override_dh_auto_configure: ffmpeg_build libass_build
 	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv 
 
 override_dh_auto_build:
 	scripts/mpv-build
 
-# call waf to install to the debian packageing dir
+# call waf to install to the debian packaging dir
 override_dh_auto_install:
-	(cd mpv;python ./waf -v install --destdir=../debian/mpv)
+	cd mpv && python waf -v install --destdir=../debian/mpv
 
 #call all the cleans
 override_dh_auto_clean:
 	scripts/mpv-clean
 	scripts/ffmpeg-clean
-	scripts/libass-clean 
+	scripts/libass-clean
