@@ -1,11 +1,20 @@
-mpv (1:0.3.3-1) UNRELEASED; urgency=medium
+mpv (0:0.3.4) stable; urgency=medium
+
+   * changelog hack: add an "UNRELEASED" changelog entry by the
+     current user when the package is built with the currently checked
+     out mpv version. This has the "papercut" of repeating the
+     "local build" bullet in the same entry each time the package is built.
+
+ -- Kevin Mitchell <kevmitch@trapezoid>  Sat, 01 Feb 2014 19:09:11 -0800
+
+mpv (0:0.3.3-1) stable; urgency=medium
 
   * enable libx264 and libmp3lame in ffmpeg build
   * make building on multiple cores actually work
 
  -- Kevin Mitchell <kevmitch@gmail.com>  Wed, 29 Jan 2014 18:46:08 -0800
 
-mpv (1:0.3.3) UNRELEASED; urgency=low
+mpv (0:0.3.3) stable; urgency=low
 
   * reimagine for waf build system
   * test building on saucy,precise,stable,sid amd64
