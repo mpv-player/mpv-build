@@ -57,6 +57,8 @@ Build-Depends:
 Package: mpv
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: libgl1-mesa-dri
+Suggests: libaacs0
 Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.
  .
