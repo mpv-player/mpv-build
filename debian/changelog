@@ -1,3 +1,16 @@
+mpv (1:0.3.4) UNRELEASED; urgency=medium
+
+  * local build
+
+ -- Local User <localuser@localhost>  Tue, 04 Feb 2014 21:48:02 -0800
+
+mpv (0:0.3.4-1) stable; urgency=medium
+
+  * better changelog hack: debian build scripts read the version before
+    it gets updated. Do a sed in the ./update instead.
+
+ -- Kevin Mitchell <kevmitch@gmail.com>  Tue, 04 Feb 2014 19:06:32 -0800
+
 mpv (0:0.3.4) stable; urgency=medium
 
    * changelog hack: add an "UNRELEASED" changelog entry by the
@@ -5,7 +18,7 @@ mpv (0:0.3.4) stable; urgency=medium
      out mpv version. This has the "papercut" of repeating the
      "local build" bullet in the same entry each time the package is built.
 
- -- Kevin Mitchell <kevmitch@trapezoid>  Sat, 01 Feb 2014 19:09:11 -0800
+ -- Kevin Mitchell <kevmitch@gmail.com>  Sat, 01 Feb 2014 19:09:11 -0800
 
 mpv (0:0.3.3-1) stable; urgency=medium
 

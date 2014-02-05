@@ -1,4 +1,5 @@
 #! /usr/bin/make -f
+
 # from official debian package: testing welcome!
 ifeq ($(DEB_HOST_ARCH_CPU),$(filter $(DEB_HOST_ARCH_CPU),powerpc sparc))
 	export CC=gcc-4.8 # fixes #73363
@@ -21,7 +22,7 @@ endif
 # Apparently, the above isn't enough because of the "%" target. Make the problematic targets explicit
 clean:
 	exec dh $@
-build: update_version
+build:
 	exec dh $@
 install:
 	exec dh $@
@@ -30,10 +31,6 @@ install:
 # so leave it out.
 %:
 	exec dh $@
-
-MPV_VERSION=$(shell cd mpv && git describe --tags | sed 's/^v//';)
-update_version:
-	dch -v "1:$(MPV_VERSION)" "local build"
 
 # this should really create multiple shared object debian packages but
 # this will do for now

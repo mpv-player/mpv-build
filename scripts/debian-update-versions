@@ -1,0 +1,48 @@
+#!/bin/sh
+
+get_version()
+{
+    (	
+        cd $1
+	git describe --tags | sed 's/^[^0-9]*//'
+    )
+}
+
+get_timestamp_commit()
+{
+    (
+        cd $1
+	TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
+	COMMIT=$(git rev-parse --short HEAD)
+	echo ${TIMESTAMP}.${COMMIT}
+    )
+}
+
+do_subst() {
+    sed -i "0,/^mpv (.*)/s/(.*)/(1:$1)/" debian/changelog	
+    sed -i "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" debian/changelog
+    sed -i "s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog
+}
+
+do_version_all() {
+    do_subst $(get_version mpv) $(get_version ffmpeg) $(get_version libass)
+}
+
+do_timestamp_commit_all() {
+   do_subst $(get_timestamp_commit mpv) $(get_timestamp_commit ffmpeg) $(get_timestamp_commit libass)
+}
+
+case "$1" in
+    --master)
+        do_timestamp_commit_all
+        ;;
+    --release|'')
+        do_version_all
+        ;;
+    *)
+        echo >&2 "$0 --master"
+        echo >&2 "$0 --release"
+        exit 0
+        ;;
+esac
+
