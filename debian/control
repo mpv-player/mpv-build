@@ -6,7 +6,7 @@ Standards-Version: 3.9.3
 Build-Depends:
  autoconf,
  automake,
- c-compiler,
+ c-compiler | gcc,
  debhelper (>= 7),
  gcc-4.8 [powerpc powerpcspe sparc],
  ladspa-sdk,
@@ -55,7 +55,10 @@ Build-Depends:
 Package: mpv
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: libgl1-mesa-dri
+Recommends:
+ libgl1-mesa-dri,
+ i965-va-driver | xvba-va-driver | libva-intel-vaapi-driver | va-driver, 
+ nvidia-vdpau-driver | nvidia-driver-binary | nvidia-current | vdpau-driver
 Suggests: libaacs0
 Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.
