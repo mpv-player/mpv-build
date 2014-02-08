@@ -1,8 +1,8 @@
-mpv (1:0.3.4) UNRELEASED; urgency=medium
+mpv (1:1.0noversion) UNRELEASED; urgency=medium
 
   * local build
 
- -- Local User <localuser@localhost>  Tue, 04 Feb 2014 21:48:02 -0800
+ -- Local User <localuser@localhost>  Sat, 08 Feb 2014 03:47:26 -0800
 
 mpv (0:0.3.4-1) stable; urgency=medium
 

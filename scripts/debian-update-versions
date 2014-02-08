@@ -19,9 +19,9 @@ get_timestamp_commit()
 }
 
 do_subst() {
-    sed -i "0,/^mpv (.*)/s/(.*)/(1:$1)/" debian/changelog	
-    sed -i "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" debian/changelog
-    sed -i "s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog
+    sed  -e "0,/^mpv (.*)/s/(.*)/(1:$1)/"\
+	-e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
+	-e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
 
 do_version_all() {
