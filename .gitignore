@@ -1,0 +1,8 @@
+ffmpeg/
+fribidi/
+libass/
+mpv/
+build_libs/
+ffmpeg_build/
+*.deb
+debian/changelog
