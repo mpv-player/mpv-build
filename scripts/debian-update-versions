@@ -19,7 +19,7 @@ get_timestamp_commit()
 }
 
 do_subst() {
-    sed  -e "0,/^mpv (.*)/s/(.*)/(1:$1)/"\
+    sed  -e "0,/^mpv (.*)/s/(.*)/(1:$1)/" \
 	-e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
 	-e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
