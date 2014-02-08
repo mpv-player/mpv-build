@@ -60,7 +60,4 @@ override_dh_auto_install:
 
 # call all the cleans
 override_dh_auto_clean:
-	scripts/mpv-clean
-	scripts/ffmpeg-clean
-	scripts/libass-clean
-	rm -rf build_libs
+	./clean
