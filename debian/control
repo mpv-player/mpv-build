@@ -8,7 +8,7 @@ Build-Depends:
  automake,
  c-compiler | gcc,
  debhelper (>= 7),
- gcc-4.8 [powerpc powerpcspe sparc],
+ gcc-4.8 [powerpc powerpcspe sparc armel armhf] | gcc-4.7 [armel armhf],
  ladspa-sdk,
  libasound2-dev [linux-any],
  libbluray-dev,
