@@ -13,7 +13,7 @@ endif
 # ammounts to the same thing.
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-	# use MFLAGS, rather than MAKEFLAGS as the latter is used by make internally
+# use MFLAGS, rather than MAKEFLAGS as the latter is used by make internally
 	MFLAGS += -j$(NUMJOBS) 
 	WAFFLAGS += -j$(NUMJOBS)
 endif
