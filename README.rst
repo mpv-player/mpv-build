@@ -103,7 +103,7 @@ If you don't want to use sudo, you can also try:
 
     mk-build-deps
 
-    dpkg -i mpv-build-deps_1.0_all.deb
+    dpkg -i mpv-build-deps_*.deb
 
     apt-get install -f
 
