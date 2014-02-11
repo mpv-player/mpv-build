@@ -119,7 +119,7 @@ dependencies:
 
 You can then build a full mpv Debian package with the following command:
 
-    debuild -uc -us -b -j4
+    dpkg-buildpackage -uc -us -b -j4
 
 The .deb file will be created in the parent directory. (4 is the number
 of jobs running in parallel - you can change it.)
