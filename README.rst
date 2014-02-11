@@ -89,30 +89,30 @@ the build scripts and this readme file.)
 Installing dependencies on Debian or Ubuntu
 ===========================================
 
-On Debian or Ubuntu systems, you can try to run this command in the
-mpv-build directory to install most of the required dependencies:
+On Debian or Ubuntu systems, you can install a fairly comprehensive
+list of build dependencies with the command
 
     sudo apt-get install devscripts equivs
 
     mk-build-deps -s sudo -i
 
-This will generate and install a dummy package with the required
-dependencies. (mk-build-deps is part of devscripts.)
+This will generate and install a dummy package that depends on the
+required packages.
 
 If you don't want to use sudo, you can also try:
 
     mk-build-deps
 
-    dpkg -i mpv-build-deps_*.deb
+    su -c 'dpkg -i mpv-build-deps_*.deb || apt-get install -f'
 
-    apt-get install -f
-
-dpkg and apt-get will require root rights of course.
+Note that it is advised you first remove any old mpv-build-deps
+package files previously created by you before running the above
+commands to ensure that you are installing the correct version.
 
 Building a Debian package
 =========================
 
-First make sure that you have the latest version of mpv and its
+Make sure that you have the latest version of mpv and its
 dependencies:
 
     ./update
@@ -121,8 +121,18 @@ You can then build a full mpv Debian package with the following command:
 
     debuild -uc -us -b -j4
 
-The .deb file will be created in the parent directory. (4 is the number
-of jobs running in parallel - you can change it.)
+(4 is the number of jobs running in parallel - change it to match your
+number of processors.) The .deb file will be created in the parent
+directory, and can be installed with
+
+    sudo dpkg -i ../mpv_*_*.deb
+
+As with the mpv-build-deps package, you should ensure you are
+installing the correct mpv_<version>_<architecture>.deb and not one
+you previously compiled.
+
+For further information regarding the Debian package, see
+debian/README.Debian.
 
 Local changes to the git repositories
 =====================================
