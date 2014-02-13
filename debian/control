@@ -23,7 +23,7 @@ Build-Depends:
  libfribidi-dev,
  libgl1-mesa-dev,
  libguess-dev,
- libjack-dev,
+ libjack-jackd2-dev | libjack-dev,
  libjpeg-dev,
  liblcms2-dev,
  liblircclient-dev,
