@@ -34,8 +34,6 @@ install:
 %:
 	exec dh $@
 
-# this should really create multiple shared object debian packages but
-# this will do for now
 # the dependencies must be built before mpv is configured
 ffmpeg_config:
 	scripts/ffmpeg-config --enable-libx264 --enable-libmp3lame
