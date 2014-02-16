@@ -32,7 +32,7 @@ Build-Depends:
  libncurses5-dev,
  libncursesw5-dev,
  libpulse-dev,
- libquvi-dev,
+ libquvi-dev | libquvi-0.9-dev,
  libsmbclient-dev,
  libtool,
  libv4l-dev [!hurd-any],
