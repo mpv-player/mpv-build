@@ -40,7 +40,6 @@ ffmpeg_config:
 		--enable-libgsm \
 		--enable-libmp3lame \
 		--enable-libopenjpeg \
-		--enable-libopus \
 		--enable-libschroedinger \
 		--enable-libspeex \
 		--enable-libtheora \
@@ -48,6 +47,7 @@ ffmpeg_config:
 		--enable-libvpx \
 		--enable-libxvid \
 		--enable-libx264
+#		--enable-libopus 
 
 ffmpeg_build: ffmpeg_config
 	scripts/ffmpeg-build $(MFLAGS)

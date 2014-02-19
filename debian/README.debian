@@ -35,12 +35,12 @@ alternative.
 In order to maintain this interoperability between distributions, this
 package must necessarily disable some features by default which are
 not universally supported. This includes decoding with libmpg123 (as
-opposed to the decoders built into ffmpeg), sdl2 audio output, and
-Wayland video support (which may nevertheless still be enabled
-manually provided sufficiently recent libraries - see below). On the
-other hand, this package enables video4Linux and native samba support
-(to play smb:// URLs), which are not present in the official Debian
-package.
+opposed to the decoders built into ffmpeg), encoding/decoding with
+libopus, sdl2 audio output, and Wayland video support (which may
+nevertheless still be enabled manually provided sufficiently recent
+libraries - see below). On the other hand, this package enables
+video4Linux and native samba support (to play smb:// URLs), which are
+not present in the official Debian package.
 
 There are several other features that are disabled in both this
 package as well as the official Debian package because they are not
