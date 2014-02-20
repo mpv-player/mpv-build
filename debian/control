@@ -24,7 +24,7 @@ Build-Depends:
  libgl1-mesa-dev,
  libgsm1-dev,
  libguess-dev,
- libharfbuzz-dev,
+# libharfbuzz-dev,
  libjack-jackd2-dev | libjack-dev,
  libjpeg-dev,
  libopenjpeg-dev,	
