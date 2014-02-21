@@ -60,13 +60,22 @@ do_releasetag()
     )
 }
 
+do_fixedref()
+{
+    (
+        cd "$1"
+        git checkout --detach "$2"
+    )
+}
+
 do_releasetag_all()
 {
     set -ex
     do_clone_all
     do_releasetag ffmpeg  'n'
     do_releasetag fribidi ''
-    do_releasetag libass  ''
+    #do_releasetag libass  ''
+    do_fixedref libass refs/tags/0.10.2
     do_releasetag mpv     'v'
 }
 
