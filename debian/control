@@ -27,7 +27,7 @@ Build-Depends:
 # libharfbuzz-dev,
  libjack-jackd2-dev | libjack-dev,
  libjpeg-dev,
- libopenjpeg-dev,	
+ libopenjpeg-dev,
  liblcms2-dev,
  liblircclient-dev,
  liblua5.1-0-dev,
@@ -36,6 +36,8 @@ Build-Depends:
  libncurses5-dev,
  libncursesw5-dev,
 # libopus-dev,
+ libopencore-amrnb-dev,
+ libopencore-amrwb-dev,
  libpulse-dev,
  libquvi-dev | libquvi-0.9-dev,
  libschroedinger-dev,
@@ -43,11 +45,15 @@ Build-Depends:
  libspeex-dev,
  libtheora-dev,
  libtool,
+ libtwolame-dev,
  libv4l-dev [!hurd-any],
  libva-dev [!hurd-any],
  libvdpau-dev,
  libvorbis-dev,
+ libvo-aacenc-dev,
+ libvo-amrwbenc-dev,
  libvpx-dev,
+ libwavpack-dev,
  libx264-dev,
  libx11-dev,
  libxext-dev,
@@ -68,12 +74,12 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends:
  libgl1-mesa-dri,
- i965-va-driver | xvba-va-driver | libva-intel-vaapi-driver | va-driver, 
+ i965-va-driver | xvba-va-driver | libva-intel-vaapi-driver | va-driver,
  nvidia-vdpau-driver | nvidia-driver-binary | nvidia-current | vdpau-driver
 Suggests: libaacs0
 Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.
  .
- This package is not part of Debian. It was created by mpv-build scripts with 
+ This package is not part of Debian. It was created by mpv-build scripts with
  statically linked ffmpeg (not libav) and libass from upstream.
 Homepage:https://github.com/mpv-player/mpv-build
