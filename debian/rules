@@ -9,12 +9,12 @@ ifeq ($(DEB_HOST_ARCH_CPU),arm)
 endif
 # To enable parallel building:
 # You can either set DEB_BUILD_OPTIONS=paralell=<num-procs> in your build environment
-# or provide the -j<numprocs> option to debuild or dpkg-buildpackage, which 
+# or provide the -j<numprocs> option to debuild or dpkg-buildpackage, which
 # ammounts to the same thing.
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 # use MFLAGS, rather than MAKEFLAGS as the latter is used by make internally
-	MFLAGS += -j$(NUMJOBS) 
+	MFLAGS += -j$(NUMJOBS)
 	WAFFLAGS += -j$(NUMJOBS)
 endif
 
@@ -29,7 +29,7 @@ build:
 install:
 	exec dh $@
 # Handle all other targets in the usual way.
-# The --parallel flag to dh doesn't seem to have the intended effect 
+# The --parallel flag to dh doesn't seem to have the intended effect
 # so leave it out.
 %:
 	exec dh $@
@@ -39,15 +39,23 @@ ffmpeg_config:
 	scripts/ffmpeg-config \
 		--enable-libgsm \
 		--enable-libmp3lame \
+		--enable-libopencore-amrnb \
+		--enable-libopencore-amrwb \
 		--enable-libopenjpeg \
+		--enable-libpulse \
 		--enable-libschroedinger \
 		--enable-libspeex \
 		--enable-libtheora \
+		--enable-libtwolame \
+		--enable-libvo-aacenc \
+	 	--enable-libvo-amrwbenc \
 		--enable-libvorbis \
 		--enable-libvpx \
+		--enable-libwavpack \
 		--enable-libxvid \
-		--enable-libx264
-#		--enable-libopus 
+		--enable-libx264 \
+		--enable-version3
+#		--enable-libopus
 
 ffmpeg_build: ffmpeg_config
 	scripts/ffmpeg-build $(MFLAGS)
@@ -60,7 +68,7 @@ libass_build: libass_config
 
 # put the config in the right place and drop the local/ since it's package managed now
 override_dh_auto_configure: ffmpeg_build libass_build
-	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv 
+	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv
 
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
