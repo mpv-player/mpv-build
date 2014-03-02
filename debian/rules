@@ -73,9 +73,14 @@ override_dh_auto_configure: ffmpeg_build libass_build
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
 
+DOCDEST=debian/mpv/usr/share/doc
+DOCSOURCE=mpv/DOCS
 # call waf to install to the debian packageing dir
 override_dh_auto_install:
 	cd mpv && python waf -v install --destdir=../debian/mpv
+	/usr/bin/install -d "$(DOCDEST)"
+	/usr/bin/install -m644 "$(DOCSOURCE)/encoding.rst" "$(DOCDEST)"
+	/usr/bin/install -m644 "$(DOCSOURCE)/edl-mpv.rst" "$(DOCDEST)"
 
 # call all the cleans
 override_dh_auto_clean:
