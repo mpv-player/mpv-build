@@ -31,6 +31,7 @@ Build-Depends:
  liblcms2-dev,
  liblircclient-dev,
  liblua5.1-0-dev,
+ liblua5.2-dev,
  libmp3lame-dev,
 # libmpg123-dev,
  libncurses5-dev,
