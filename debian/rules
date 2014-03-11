@@ -73,7 +73,7 @@ override_dh_auto_configure: ffmpeg_build libass_build
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
 
-DOCDEST=debian/mpv/usr/share/doc
+DOCDEST=debian/mpv/usr/share/doc/mpv
 DOCSOURCE=mpv/DOCS
 # call waf to install to the debian packageing dir
 override_dh_auto_install:
