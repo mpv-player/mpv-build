@@ -34,8 +34,7 @@ alternative.
 
 In order to maintain this interoperability between distributions, this
 package must necessarily disable some features by default which are
-not universally supported. This includes decoding with libmpg123 (as
-opposed to the decoders built into ffmpeg), encoding/decoding with
+not universally supported. These include encoding/decoding with
 libopus, harbuzz support for RTL sripts, sdl2 audio output, and
 Wayland video support (which may nevertheless still be enabled
 manually provided sufficiently recent libraries - see below). On the
@@ -58,7 +57,7 @@ version of mpv, this package can also trivially be built from the
 latest git master of mpv (as well as ffmpeg and libass). As described
 in README.rst [1], this is achieved by calling
 
-    ./update --master 
+    ./update --master
 
 prior to building this Debian package.
 
@@ -67,7 +66,7 @@ Non-free encoding codecs
 
 The optional encoding libraries libx264 and libmp3lame are already
 enabled by this package. To enable additional non-free codecs,
-manually install Fraunhofer FDK AAC codec development files 
+manually install Fraunhofer FDK AAC codec development files
 
     apt-get install libfdk-aac-dev
 
