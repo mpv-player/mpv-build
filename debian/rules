@@ -82,6 +82,10 @@ override_dh_auto_install:
 	/usr/bin/install -m644 "$(DOCSOURCE)/encoding.rst" "$(DOCDEST)"
 	/usr/bin/install -m644 "$(DOCSOURCE)/edl-mpv.rst" "$(DOCDEST)"
 
+# for manually installed dependencies
+override_dh_shlibdeps:
+	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
+
 # call all the cleans
 override_dh_auto_clean:
 	./clean
