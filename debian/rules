@@ -37,24 +37,20 @@ install:
 # the dependencies must be built before mpv is configured
 ffmpeg_config:
 	scripts/ffmpeg-config \
+		--enable-gnutls \
 		--enable-libgsm \
 		--enable-libmp3lame \
-		--enable-libopencore-amrnb \
-		--enable-libopencore-amrwb \
 		--enable-libopenjpeg \
 		--enable-libpulse \
 		--enable-libschroedinger \
 		--enable-libspeex \
 		--enable-libtheora \
 		--enable-libtwolame \
-		--enable-libvo-aacenc \
-	 	--enable-libvo-amrwbenc \
 		--enable-libvorbis \
 		--enable-libvpx \
 		--enable-libwavpack \
-		--enable-libxvid \
-		--enable-libx264 \
-		--enable-version3
+		--enable-gpl --enable-libxvid --enable-libx264 \
+		--enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libvo-aacenc --enable-libvo-amrwbenc
 #		--enable-libopus
 
 ffmpeg_build: ffmpeg_config
