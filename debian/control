@@ -1,7 +1,7 @@
 Source: mpv
 Section: misc
 Priority: optional
-Maintainer: Wessel Dankers <wsl@fruit.je>
+Maintainer: Kevin Mitchell <kevmitch@gmail.com>
 Standards-Version: 3.9.3
 Build-Depends:
  autoconf,
