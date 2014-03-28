@@ -89,7 +89,12 @@ the build scripts and this readme file.)
 Installing dependencies on Debian or Ubuntu
 ===========================================
 
-On Debian or Ubuntu systems, you can install a fairly comprehensive
+First make sure that you have the latest version of these build
+scripts, mpv, and its dependencies:
+
+    ./update
+
+On Debian or Ubuntu systems, you can then install a fairly comprehensive
 list of build dependencies with the command
 
     sudo apt-get install devscripts equivs
@@ -107,17 +112,12 @@ If you don't want to use sudo, you can also try:
 
     mk-build-deps
 
-    su -c 'dpkg -i mpv-build-deps_*.deb || apt-get install -f'
+    su -c 'dpkg -i mpv-build-deps_*_*.deb || apt-get install -f'
 
 Building a Debian package
 =========================
 
-Make sure that you have the latest version of mpv and its
-dependencies:
-
-    ./update
-
-You can then build a full mpv Debian package with the following command:
+You can build a full mpv Debian package with the following command:
 
     dpkg-buildpackage -uc -us -b -j4
 
