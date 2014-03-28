@@ -13,6 +13,7 @@ Build-Depends:
  libasound2-dev [linux-any],
  libbluray-dev,
  libbs2b-dev,
+ libcaca-dev,
  libcdio-paranoia-dev,
  libdvdnav-dev,
  libdvdread-dev,

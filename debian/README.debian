@@ -44,7 +44,7 @@ package.
 
 There are several other features that are disabled in both this
 package as well as the official Debian package because they are not
-widely needed or used. These include caca, radio interface, openal
+widely needed or used. These include radio interface, openal
 output, portaudio output, rsound/libroar/sndio input/output, sdl1,
 joystick, videoio.h/libpt. If you find any of these useful, please
 open an issue at [3] explaining why you think the feature in question
