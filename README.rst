@@ -117,7 +117,7 @@ dependencies:
 
     ./update
 
-You can then build a full mpv Debian package with the following commands:
+You can then build a full mpv Debian package with the following command:
 
     dpkg-buildpackage -uc -us -b -j4
 
