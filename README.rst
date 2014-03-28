@@ -94,20 +94,20 @@ list of build dependencies with the command
 
     sudo apt-get install devscripts equivs
 
+    rm -f mpv-build-deps_*_*.deb
+
     mk-build-deps -s sudo -i
 
 This will generate and install a dummy package that depends on the
-required packages.
+required packages. The rm -f command makes sure there are no previous
+versions of the build-deps package lying around that may otherwise
+confuse mk-build-deps.
 
 If you don't want to use sudo, you can also try:
 
     mk-build-deps
 
     su -c 'dpkg -i mpv-build-deps_*.deb || apt-get install -f'
-
-Note that it is advised you first remove any old mpv-build-deps
-package files previously created by you before running the above
-commands to ensure that you are installing the correct version.
 
 Building a Debian package
 =========================
@@ -117,19 +117,21 @@ dependencies:
 
     ./update
 
-You can then build a full mpv Debian package with the following command:
+You can then build a full mpv Debian package with the following commands:
 
-    debuild -uc -us -b -j4
+    dpkg-buildpackage -uc -us -b -j4
 
-(4 is the number of jobs running in parallel - change it to match your
-number of processors.) The .deb file will be created in the parent
-directory, and can be installed with
+"4" is the number of jobs running in parallel - change it to match
+your number of processors. The file mpv_<version>_<architecture>.deb
+will be created in the parent directory. Install it with
 
-    sudo dpkg -i ../mpv_*_*.deb
+    sudo dpkg -i ../mpv_<version>_<architecture>.deb
 
-As with the mpv-build-deps package, you should ensure you are
-installing the correct mpv_<version>_<architecture>.deb and not one
-you previously compiled.
+where you must replace <version> with the version of mpv you just
+built (as indicated in debian/changelog) and <architecture> with your
+architecture. As with the mpv-build-deps package, you should ensure
+you are installing the correct package and not one you previously
+compiled.
 
 For further information regarding the Debian package, see
 debian/README.Debian.
