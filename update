@@ -55,7 +55,7 @@ do_releasetag()
 {
     (
         cd "$1"
-        version=`git tag | versort_with_prefix "$2" | tail -n 1`
+        version=`git tag | grep -v rc | versort_with_prefix "$2" | tail -n 1`
         git checkout --detach refs/tags/"$version"
     )
 }
