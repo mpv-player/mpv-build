@@ -25,30 +25,30 @@ upstream release used to build this package.
 [2] https://github.com/mpv-player/mpv/wiki/FFmpeg-versus-Libav
 
 Furthermore, the official Debian mpv package is ONLY available in
-unstable/testing. It will in general not work in Debian stable (there
-is currently no version in backports) or in any current release of
-Ubuntu. This package on the other hand, builds and installs on both Debian
-stable, and testing/unstable as well as Ubuntu precise (12.04) and saucy
-(13.10). For the older distributions, this package is probably the best
-alternative.
+unstable/testing. It will, in general, not work in Debian stable
+(there is currently no version in backports) or in any current release
+of Ubuntu. This package on the other hand, builds and installs on both
+Debian Wheezy (stable), and Jessie (testing/unstable) as well as
+Ubuntu Precise (12.04) and Saucy (13.10). For the older distributions,
+this package is probably the best alternative.
 
 In order to maintain this interoperability between distributions, this
 package must necessarily disable some features by default which are
-not universally supported. These include encoding/decoding with
-libopus, harbuzz support for RTL sripts, sdl2 audio output, and
-Wayland video support (which may nevertheless still be enabled
-manually provided sufficiently recent libraries - see below). On the
-other hand, this package enables video4Linux and native samba support
-(to play smb:// URLs), which are not present in the official Debian
-package.
+not universally supported. These include sdl2 audio/video output,
+encoding/decoding with libopus, Wayland support, and harfbuzz
+support for RTL scripts (the latter three may may nevertheless be
+trivially enabled provided sufficiently recent libraries - see
+below). On the other hand, this package enables video4Linux and native
+samba support (to play smb:// URLs), which are not present in the
+official Debian package.
 
 There are several other features that are disabled in both this
 package as well as the official Debian package because they are not
-widely needed or used. These include radio interface, openal
-output, portaudio output, rsound/libroar/sndio input/output, sdl1,
-joystick, videoio.h/libpt. If you find any of these useful, please
-open an issue at [3] explaining why you think the feature in question
-should be enabled, and we can try and include it in this package.
+widely needed or used. These include openal output, portaudio output,
+rsound/libroar/sndio input/output, sdl1, joystick, videoio.h/libpt. If
+you find any of these useful, please open an issue at [3] explaining
+why you think the feature in question should be enabled, and we can
+try and include it in this package.
 
 [3] https://github.com/mpv-player/mpv-build/issues
 
@@ -61,21 +61,28 @@ in README.rst [1], this is achieved by calling
 
 prior to building this Debian package.
 
-Non-free encoding codecs
-========================
+Additional ffmpeg features
+==========================
 
-The optional encoding libraries libx264 and libmp3lame are already
-enabled by this package. To enable additional non-free codecs,
-manually install Fraunhofer FDK AAC codec development files
+All relevant and free ffmpeg features/codecs should be enabled. If
+something is missing, it is a bug, and should be reported at [3].
+Features for which distribution packages are not universally available
+are the exception. Unfortunately, libopus falls into this category as
+there is no package for it in Ubuntu Precise (12.04). To enable it
+elsewhere, install the relevant development package
 
-    apt-get install libfdk-aac-dev
+    apt-get install libopus-dev
 
 and add the relevant options to the mpv-build/ffmpeg_options file
 
-    echo --enable-nonfree    >> ffmpeg_options
-    echo --enable-libfdk-aac >> ffmpeg_options
+    echo --enable-libopus >> ffmpeg_options
 
-This must be done prior to building this package.
+This must be done prior to building the package.
+
+Similarly, to enable the non-free Fraunhofer FDK AAC codec:
+
+    apt-get install libfdk-aac-dev
+    echo --enable-nonfree --enable-libfdk-aac >> ffmpeg_options
 
 Wayland support
 ===============
@@ -84,7 +91,7 @@ According to wayland.freedesktop.org, "Wayland is intended as a
 simpler replacement for X, easier to develop and maintain". It is very
 much a work in progress, so adequate functionality requires recent
 version of the relevant libraries. At present, this is only possible
-on Debian testing/unstable (not stable or Ubuntu precise or saucy). To
+on Debian Jessie (not Wheezy or Ubuntu Precise or Saucy). To
 maintain interoperability, this package therefore does not build with
 Wayland support by default.
 
@@ -94,3 +101,13 @@ necessary packages before building:
     apt-get install libwayland-dev libxkbcommon-dev
 
 The mpv build will then automatically detect and link to them.
+
+Harfbuz support
+===============
+
+To enable RTL (Right To Left) support in libass requires only
+installing the relevant development package:
+
+    apt-get install libharfbuzz-dev
+
+The libass configure will then automatically find it.
