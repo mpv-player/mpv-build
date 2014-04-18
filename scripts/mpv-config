@@ -1,12 +1,13 @@
 #!/bin/sh
 set -e
 
+BUILD="$(pwd)"
+
 USER_OPTS="$@"
 if test -f "$BUILD"/mpv_options ; then
     USER_OPTS="$(cat "$BUILD"/mpv_options) $USER_OPTS"
 fi
 OPTIONS="$USER_OPTS"
 
-BUILD="$(pwd)"
 cd "$BUILD"/mpv
 PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig ./waf configure $OPTIONS "$@"
