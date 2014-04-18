@@ -9,11 +9,6 @@ if test -f "$BUILD"/ffmpeg_options ; then
 fi
 OPTIONS="--enable-gpl --enable-avresample --disable-debug --disable-doc $USER_OPTS"
 
-# optional flags for encoding (uncomment if you want to support these encoders)
-#OPTIONS="$OPTIONS --enable-libx264"
-#OPTIONS="$OPTIONS --enable-libmp3lame"
-#OPTIONS="$OPTIONS --enable-nonfree --enable-libfdk-aac"
-
 echo Using ffmpeg options: $OPTIONS
 
 mkdir -p "$BUILD"/ffmpeg_build

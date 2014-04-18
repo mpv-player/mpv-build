@@ -163,7 +163,20 @@ because these are untested bleeding-edge development versions of the code.
 
 Use on your own risk.
 
-(Note: in earlier mpv-build revisions, the script ``force-head`` did this.)
+Warning
+-------
+
+./rebuild will call ./update, but without this flag, and thus will
+checkout the release version again (i.e. it will not use master).
+
+mpv configure options
+=====================
+
+Just like ``ffmpeg_options``, the file ``mpv_options`` can be used
+to set custom mpv configure options. Like with ffmpeg_option, it
+expects one switch per line (e.g. ``--enable-something``).
+
+But normally, you shouldn't need this.
 
 Contact
 =======

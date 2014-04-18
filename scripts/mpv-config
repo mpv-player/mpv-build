@@ -1,7 +1,11 @@
 #!/bin/sh
 set -e
 
-OPTIONS=""
+USER_OPTS="$@"
+if test -f "$BUILD"/mpv_options ; then
+    USER_OPTS="$(cat "$BUILD"/mpv_options) $USER_OPTS"
+fi
+OPTIONS="$USER_OPTS"
 
 BUILD="$(pwd)"
 cd "$BUILD"/mpv
