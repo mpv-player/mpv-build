@@ -83,8 +83,9 @@ example, to enable some dependencies needed for encoding:
 
     echo --enable-nonfree    >> ffmpeg_options
 
-(Do this in the mpv-build toplevel directory, the same that contains
-the build scripts and this readme file.)
+Do this in the mpv-build top-level directory (the same that contains
+the build scripts and this readme file). It must be done prior running
+./build or ./rebuild.
 
 Installing dependencies on Debian or Ubuntu
 ===========================================
@@ -172,9 +173,10 @@ checkout the release version again (i.e. it will not use master).
 mpv configure options
 =====================
 
-Just like ``ffmpeg_options``, the file ``mpv_options`` can be used
-to set custom mpv configure options. Like with ffmpeg_option, it
-expects one switch per line (e.g. ``--enable-something``).
+Just like ``ffmpeg_options``, the file ``mpv_options`` in the
+mpv-build top-level directory can be used to set custom mpv configure
+options prior to compiling. Like with ffmpeg_option, it expects one
+switch per line (e.g. ``--enable-something``).
 
 But normally, you shouldn't need this.
 
