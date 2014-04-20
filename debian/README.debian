@@ -13,34 +13,36 @@ Differences with the official Debian package
 ============================================
 
 Debian testing/unstable already has a separate official package for
-mpv, which closely tracks the current upstream releases. The biggest
-difference between this package and the one in the official Debian
-archive is that it statically links against the latest upstream
-version of ffmpeg and libass. Debian uses the libav fork of ffmpeg,
-and therefore that's what the official package links against. However,
+mpv, which closely tracks the current upstream releases. Ubuntu trusty
+also has an outdated version of mpv (0.3.4). The biggest difference
+between this package and the official Debian/Ubuntu ones is that it
+statically links against the latest upstream version of ffmpeg and
+libass. Debian and therefore also Ubuntu use the libav fork of ffmpeg,
+and therefore that's what the official packages link against. However,
 as described at [2], ffmpeg is preferred for building mpv. The version
 of libass in Debian unstable also has a slight lag behind the current
-upstream release used to build this package.
+upstream release used to build this package. The version in trusty is
+locked at 0.10.1.
 
 [2] https://github.com/mpv-player/mpv/wiki/FFmpeg-versus-Libav
 
-Furthermore, the official Debian mpv package is ONLY available in
-unstable/testing. It will, in general, not work in Debian stable
-(there is currently no version in backports) or in any current release
-of Ubuntu. This package on the other hand, builds and installs on both
-Debian Wheezy (stable), and Jessie (testing/unstable) as well as
-Ubuntu Precise (12.04) and Saucy (13.10). For the older distributions,
-this package is probably the best alternative.
+Furthermore, the official packages will only work in the release
+they're contained in. This package on the other hand, builds and
+installs on both Debian Wheezy (stable), and Jessie (testing/unstable)
+as well as Ubuntu Precise (12.04) and Trusty (14.04). For the older
+distributions, this package is probably the best alternative.
 
 In order to maintain this interoperability between distributions, this
 package must necessarily disable some features by default which are
-not universally supported. These include sdl2 audio/video output,
-encoding/decoding with libopus, Wayland support, and harfbuzz
-support for RTL scripts (the latter three may may nevertheless be
-trivially enabled provided sufficiently recent libraries - see
-below). On the other hand, this package enables video4Linux and native
-samba support (to play smb:// URLs), which are not present in the
-official Debian package.
+not universally supported. These include encoding/decoding with libopus,
+Wayland support, harfbuzz support for RTL scripts and sdl2 audio/video
+output (you may nevertheless trivially enable these provided
+sufficiently recent libraries - see below). On the other hand, this
+packge enables caca (for silly ascii art output) which is not present
+in the official Debian package. The official Ubuntu package is
+additionally missing video4Linux, and native samba support (to play
+smb:// URLs). Due to a packaging bug, it is also missing lua support
+(therefore no on-screen controller).
 
 There are several other features that are disabled in both this
 package as well as the official Debian package because they are not
@@ -91,7 +93,7 @@ According to wayland.freedesktop.org, "Wayland is intended as a
 simpler replacement for X, easier to develop and maintain". It is very
 much a work in progress, so adequate functionality requires recent
 version of the relevant libraries. At present, this is only possible
-on Debian Jessie (not Wheezy or Ubuntu Precise or Saucy). To
+on Debian Jessie or Ubuntu Trusty (not Wheezy or Ubuntu Precise). To
 maintain interoperability, this package therefore does not build with
 Wayland support by default.
 
@@ -110,4 +112,19 @@ installing the relevant development package:
 
     apt-get install libharfbuzz-dev
 
-The libass configure will then automatically find it.
+The libass configure will then automatically find it. This is
+necessary as the package is not available in Ubunutu Precise.
+
+SDL2 Support
+============
+
+mpv has support for sdl2 video and audio output, but it is disabled by
+default because opengl/alsa are preferred. The required packages are
+also not available in Ubuntu Precise. If however, you wish to
+try the sdl2 modules install the sdl2 development package:
+
+    apt-get install libsdl2-dev
+
+and add the option to the mpv_options file
+
+    echo --enable-sdl2 >> mpv_options
