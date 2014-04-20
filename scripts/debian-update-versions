@@ -4,7 +4,8 @@ get_version()
 {
     (	
         cd $1
-	git describe --tags | sed 's/^[^0-9]*//'
+	VERSION=$(git describe --tags | sed 's/^[^0-9]*//')
+	echo 1:${VERSION}
     )
 }
 
@@ -14,12 +15,12 @@ get_timestamp_commit()
         cd $1
 	TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
 	COMMIT=$(git rev-parse --short HEAD)
-	echo ${TIMESTAMP}.${COMMIT}
+	echo 2:${TIMESTAMP}.${COMMIT}
     )
 }
 
 do_subst() {
-    sed  -e "0,/^mpv (.*)/s/(.*)/(1:$1)/" \
+    sed  -e "0,/^mpv (.*)/s/(.*)/($1)/" \
 	-e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
 	-e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
