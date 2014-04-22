@@ -75,7 +75,8 @@ do_releasetag_all()
     do_releasetag ffmpeg  'n'
     do_releasetag fribidi ''
     #do_releasetag libass  ''
-    do_fixedref libass refs/tags/0.10.2
+    #do_fixedref libass refs/tags/0.10.2
+    do_gitmaster libass
     do_releasetag mpv     'v'
 }
 
