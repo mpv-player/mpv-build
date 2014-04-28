@@ -69,14 +69,43 @@ override_dh_auto_configure: ffmpeg_build libass_build
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
 
-DOCDEST=debian/mpv/usr/share/doc/mpv
+
 DOCSOURCE=mpv/DOCS
+TOOLSSOURCE=mpv/TOOLS
+DOCDEST=debian/mpv/usr/share/doc/mpv
+TOOLSDEST=$(DOCDEST)/TOOLS
 # call waf to install to the debian packageing dir
 override_dh_auto_install:
 	cd mpv && python waf -v install --destdir=../debian/mpv
-	/usr/bin/install -d "$(DOCDEST)"
-	/usr/bin/install -m644 "$(DOCSOURCE)/encoding.rst" "$(DOCDEST)"
-	/usr/bin/install -m644 "$(DOCSOURCE)/edl-mpv.rst" "$(DOCDEST)"
+
+	find "$(DOCSOURCE)" -mindepth 1 -type d \
+	-not -regex '.*man.*' \
+	-not -regex '.*client_api_examples.*' \
+	-printf "%P\0" | \
+	xargs -0i /usr/bin/install -d "$(DOCDEST)/{}"
+
+	find "$(DOCSOURCE)" -mindepth 1 -type f -not -regex '.*manu.*' \
+	-not -regex '.*man.*' \
+	-not -regex '.*client_api_examples.*' \
+	-not -name 'tech-overview.txt' \
+	-not -name 'waf-buildsystem.rst' \
+	-not -name 'crosscompile-mingw.md' \
+	-not -name 'coding-style.md' \
+	-printf "%P\0" | \
+	xargs -0i /usr/bin/install -m644 "$(DOCSOURCE)/{}" "$(DOCDEST)/{}"
+
+	find "$(TOOLSSOURCE)" -mindepth 1 -type d \
+	-not -regex '.*osxbundle.*' \
+	-printf "%P\0" | \
+	xargs -0i /usr/bin/install -d "$(TOOLSDEST)/{}"
+
+	find "$(TOOLSSOURCE)" -mindepth 1 -type f \
+	-not -regex '.*osxbundle.*' \
+	-not -name 'gen-x11-icon.sh' \
+	-not -name 'file2string.pl' \
+	-not -name 'uncrustify.cfg' \
+	-printf "%P\0" | \
+	xargs -0i /usr/bin/install -m644 "$(TOOLSSOURCE)/{}" "$(TOOLSDEST)/{}"
 
 # for manually installed dependencies
 override_dh_shlibdeps:
