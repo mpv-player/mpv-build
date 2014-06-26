@@ -7,7 +7,13 @@ USER_OPTS="$@"
 if test -f "$BUILD"/ffmpeg_options ; then
     USER_OPTS="$(cat "$BUILD"/ffmpeg_options) $USER_OPTS"
 fi
-OPTIONS="--enable-gpl --enable-avresample --disable-debug --disable-doc $USER_OPTS"
+OPTIONS="--enable-gpl --enable-avresample --disable-debug --disable-doc"
+
+if "$BUILD"/scripts/test-libmpv ; then
+    OPTIONS="$OPTIONS --enable-pic"
+fi
+
+OPTIONS="$OPTIONS $USER_OPTS"
 
 echo Using ffmpeg options: $OPTIONS
 

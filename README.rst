@@ -180,6 +180,18 @@ switch per line (e.g. ``--enable-something``).
 
 But normally, you shouldn't need this.
 
+Building libmpv
+---------------
+
+You can enable building libmpv by enabling the configure option:
+
+    echo --enable-libmpv-shared > mpv_options
+
+Note that this will make the mpv-build scripts also enable PIC for all used
+libraries. For this reason, be sure to run ``./clean`` before rebuilding.
+
+The Debian packaging scripts do not support libmpv yet.
+
 Contact
 =======
 

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# This script returns whether libmpv is to be built.
+
+set -e
+
+BUILD="$(pwd)"
+
+USER_OPTS="$@"
+if test -f "$BUILD"/mpv_options ; then
+    if cat "$BUILD"/mpv_options | grep -e '--enable-libmpv' > /dev/null ; then
+        exit 0
+    fi
+fi
+exit 1
