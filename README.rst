@@ -52,6 +52,7 @@ Dependencies
 Essential dependencies (incomplete list):
 
 - gcc or clang, yasm, git
+- autoconf/autotools (for libass)
 - X development headers (xlib, X extensions, vdpau, GL, Xv, ...)
 - Audio output development headers (libasound, pulseaudio)
 - fribidi, freetype, fontconfig development headers (for libass)
