@@ -20,8 +20,13 @@ get_timestamp_commit()
 }
 
 do_subst() {
-    sed  -e "0,/^mpv (.*)/s/(.*)/($1)/" \
-	-e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
+    #escape the arguments, so they don't mess with sed
+    ESCARG1=$(echo "$1"|sed -e 's/[\/&]/\\&/g')
+    ESCARG2=$(echo "$2"|sed -e 's/[\/&]/\\&/g')
+    ESCARG3=$(echo "$3"|sed -e 's/[\/&]/\\&/g')
+
+    sed  -e "0,/^mpv (.*)/s/(.*)/($ESCARG1)/" \
+	-e "s/^  \* local build.*/  \* local build with ffmpeg $ESCARG2, libass $ESCARG3/" \
 	-e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
 
