@@ -3,7 +3,7 @@
 get_version()
 {
     (
-        cd $1
+        cd $1 > /dev/null
 	      VERSION=$(git describe --tags | sed 's/^[^0-9]*//')
 	      echo 1:${VERSION}
     )
@@ -12,7 +12,7 @@ get_version()
 get_timestamp_commit()
 {
     (
-        cd $1
+        cd $1 > /dev/null
 	      TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
 	      COMMIT=$(git rev-parse --short HEAD)
 	      echo 2:${TIMESTAMP}.${COMMIT}
