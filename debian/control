@@ -36,8 +36,6 @@ Build-Depends:
  liblua5.2-dev,
  libmp3lame-dev,
  libmpg123-dev,
- libncurses5-dev,
- libncursesw5-dev,
 # libopus-dev,
  libopencore-amrnb-dev,
  libopencore-amrwb-dev,
