@@ -1,5 +1,7 @@
 #! /usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS:=hardening=+all
+
 # from official debian package: testing welcome!
 ifeq ($(DEB_HOST_ARCH_CPU),$(filter $(DEB_HOST_ARCH_CPU),powerpc sparc))
 	export CC=gcc-4.8 # fixes #73363
