@@ -43,6 +43,7 @@ ffmpeg_config:
 		--enable-libgsm \
 		--enable-libmp3lame \
 		--enable-libopenjpeg \
+		--enable-libopus \
 		--enable-libpulse \
 		--enable-libschroedinger \
 		--enable-libspeex \
@@ -53,7 +54,6 @@ ffmpeg_config:
 		--enable-libwavpack \
 		--enable-gpl --enable-libxvid --enable-libx264 \
 		--enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libvo-aacenc --enable-libvo-amrwbenc
-#		--enable-libopus
 
 ffmpeg_build: ffmpeg_config
 	scripts/ffmpeg-build $(MFLAGS)
@@ -66,7 +66,7 @@ libass_build: libass_config
 
 # put the config in the right place and drop the local/ since it's package managed now
 override_dh_auto_configure: ffmpeg_build libass_build
-	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv --enable-cdda
+	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv --enable-cdda # --enable-sdl2
 
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
@@ -86,7 +86,7 @@ override_dh_auto_install:
 	-printf "%P\0" | \
 	xargs -0i /usr/bin/install -d "$(DOCDEST)/{}"
 
-	find "$(DOCSOURCE)" -mindepth 1 -type f -not -regex '.*manu.*' \
+	find "$(DOCSOURCE)" -mindepth 1 -type f \
 	-not -regex '.*man.*' \
 	-not -regex '.*client_api_examples.*' \
 	-not -name 'tech-overview.txt' \
