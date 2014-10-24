@@ -76,8 +76,8 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends:
  libgl1-mesa-dri,
- i965-va-driver | xvba-va-driver | libva-intel-vaapi-driver | va-driver,
- nvidia-vdpau-driver | nvidia-driver-binary | nvidia-current | vdpau-driver
+ i965-va-driver | libva-intel-vaapi-driver | va-driver,
+ mesa-vdpau-drivers | nvidia-vdpau-driver | nvidia-driver-binary | nvidia-current | vdpau-driver
 Suggests: libaacs0
 Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.
