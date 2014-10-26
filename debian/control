@@ -60,6 +60,7 @@ Build-Depends:
  libx11-dev,
  libxext-dev,
  libxinerama-dev,
+ libxrandr-dev,
  libxss-dev,
  libxv-dev,
  libxvmc-dev,
