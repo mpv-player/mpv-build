@@ -31,16 +31,6 @@ do_gitmaster()
     )
 }
 
-do_gitmaster_all()
-{
-    set -ex
-    do_clone_all
-    do_gitmaster ffmpeg
-    do_gitmaster fribidi
-    do_gitmaster libass
-    do_gitmaster mpv
-}
-
 versort_with_prefix()
 {
 	# Emulate sort -V using a known prefix. Filter out anything else.
@@ -68,16 +58,19 @@ do_fixedref()
     )
 }
 
-do_releasetag_all()
+checkout_ffmpeg=do_releasetag
+checkout_fribidi=do_releasetag
+checkout_libass=do_gitmaster
+checkout_mpv=do_releasetag
+
+checkout_all()
 {
     set -ex
     do_clone_all
-    do_releasetag ffmpeg  'n'
-    do_releasetag fribidi ''
-    #do_releasetag libass  ''
-    #do_fixedref libass refs/tags/0.10.2
-    do_gitmaster libass
-    do_releasetag mpv     'v'
+    $checkout_ffmpeg ffmpeg  'n'
+    $checkout_fribidi fribidi ''
+    $checkout_libass libass
+    $checkout_mpv mpv     'v'
 }
 
 do_bootstrap()
@@ -99,12 +92,38 @@ if [ x"$1" != x"--skip-selfupdate" ]; then
 fi
 shift
 
+select_branch()
+{
+    if [ -d config/ ] && [ -f config/"branch-$1" ]; then
+        case `cat config/"branch-$1"` in
+        master)
+            echo do_gitmaster
+            ;;
+        *)
+            # "release" is the defined value; but default anything else to it
+            echo do_releasetag
+            ;;
+        esac
+    else
+        echo "$2"
+    fi
+}
+
+checkout_ffmpeg=`select_branch ffmpeg $checkout_ffmpeg`
+checkout_mpv=`select_branch mpv $checkout_mpv`
+
 case "$1" in
     --master)
-        do_gitmaster_all
+        checkout_ffmpeg=do_gitmaster
+        checkout_fribidi=do_gitmaster
+        checkout_libass=do_gitmaster
+        checkout_mpv=do_gitmaster
         ;;
-    --release|'')
-        do_releasetag_all
+    --release)
+        checkout_ffmpeg=do_releasetag
+        checkout_mpv=do_releasetag
+        ;;
+    '')
         ;;
     *)
         echo >&2 "$0 --master"
@@ -112,6 +131,8 @@ case "$1" in
         exit 0
         ;;
 esac
+
+checkout_all
 
 do_update_debian_versions $1
 
