@@ -1,10 +1,17 @@
 #!/bin/sh
 set -e
 
+if [ x"$1" = "x" ]; then
+    echo "Need a component name."
+    exit 1
+fi
+
 mkdir -p config
 
 FILENAME="branch-$1"
 BRANCH="$2"
 echo "$BRANCH" > config/"$FILENAME"
+
+scripts/"$1"-clean
 
 echo "Run ./rebuild to update the source and to compile the selected branch."
