@@ -4,18 +4,13 @@ get_version()
 {
     (
         cd $1 > /dev/null
-	      VERSION=$(git describe --tags | sed 's/^[^0-9]*//')
-	      echo 1:${VERSION}
-    )
-}
-
-get_timestamp_commit()
-{
-    (
-        cd $1 > /dev/null
-	      TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
-	      COMMIT=$(git rev-parse --short HEAD)
-	      echo 2:${TIMESTAMP}.${COMMIT}
+	      VERSION=1:$(git name-rev --name-only --tags HEAD | sed -e 's/^[^0-9]*//' -e 's/\^0$//')
+        if [ "$VERSION" = "1:" ]; then
+	          TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
+	          COMMIT=$(git rev-parse --short HEAD)
+            VERSION="2:${TIMESTAMP}.${COMMIT}"
+        fi
+	      echo ${VERSION}
     )
 }
 
@@ -25,24 +20,4 @@ do_subst() {
 	      -e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
 
-do_version_all() {
-    do_subst $(get_version mpv) $(get_version ffmpeg) $(get_version libass)
-}
-
-do_timestamp_commit_all() {
-    do_subst $(get_timestamp_commit mpv) $(get_timestamp_commit ffmpeg) $(get_timestamp_commit libass)
-}
-
-case "$1" in
-    --master)
-        do_timestamp_commit_all
-        ;;
-    --release|'')
-        do_version_all
-        ;;
-    *)
-        echo >&2 "$0 --master"
-        echo >&2 "$0 --release"
-        exit 0
-        ;;
-esac
+do_subst $(get_version mpv) $(get_version ffmpeg) $(get_version libass)

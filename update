@@ -134,6 +134,6 @@ esac
 
 checkout_all
 
-do_update_debian_versions $1
+do_update_debian_versions
 
 do_bootstrap
