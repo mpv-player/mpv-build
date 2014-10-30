@@ -167,12 +167,6 @@ switch between git master and the latest FFmpeg release.
 
 Use on your own risk.
 
-Warning
--------
-
-./rebuild will call ./update, but without this flag, and thus will
-checkout the release version again (i.e. it will not use master).
-
 mpv configure options
 =====================
 
