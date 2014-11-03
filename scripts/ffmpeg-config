@@ -19,4 +19,4 @@ echo Using ffmpeg options: $OPTIONS
 
 mkdir -p "$BUILD"/ffmpeg_build
 cd "$BUILD"/ffmpeg_build
-"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS
+PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig "$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS

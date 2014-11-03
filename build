@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-scripts/ffmpeg-config
-scripts/ffmpeg-build $@
 #scripts/fribidi-config
 #scripts/fribidi-build $@
 scripts/libass-config
 scripts/libass-build $@
+scripts/ffmpeg-config
+scripts/ffmpeg-build $@
 scripts/mpv-config
 scripts/mpv-build $@
