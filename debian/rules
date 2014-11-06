@@ -36,8 +36,14 @@ install:
 %:
 	exec dh $@
 
-# the dependencies must be built before mpv is configured
-ffmpeg_config:
+libass_config:
+	scripts/libass-config
+
+libass_build: libass_config
+	scripts/libass-build $(MFLAGS)
+
+# depend on libass_build in case the user specified --enable-libass in ffmpeg_options
+ffmpeg_config: libass_build
 	scripts/ffmpeg-config \
 		--enable-gnutls \
 		--enable-libgsm \
@@ -57,12 +63,6 @@ ffmpeg_config:
 
 ffmpeg_build: ffmpeg_config
 	scripts/ffmpeg-build $(MFLAGS)
-
-libass_config:
-	scripts/libass-config
-
-libass_build: libass_config
-	scripts/libass-build $(MFLAGS)
 
 # put the config in the right place and drop the local/ since it's package managed now
 override_dh_auto_configure: ffmpeg_build libass_build
