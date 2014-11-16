@@ -23,7 +23,7 @@ Build-Depends:
  libfreetype6-dev,
  libfribidi-dev,
  libgl1-mesa-dev,
- libgnutls-dev,
+ libgnutls-dev | libgnutls28-dev,
  libgsm1-dev,
  libguess-dev,
 # libharfbuzz-dev,
