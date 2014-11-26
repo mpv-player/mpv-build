@@ -40,7 +40,6 @@ Build-Depends:
  libopencore-amrnb-dev,
  libopencore-amrwb-dev,
  libpulse-dev,
- libquvi-dev | libquvi-0.9-dev,
  libschroedinger-dev,
 # libsdl2-dev
  libsmbclient-dev,

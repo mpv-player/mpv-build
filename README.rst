@@ -57,7 +57,8 @@ Essential dependencies (incomplete list):
 - Audio output development headers (libasound, pulseaudio)
 - fribidi, freetype, fontconfig development headers (for libass)
 - libjpeg
-- libquvi if you want to play Youtube videos directly
+- youtube-dl (at runtime) if you want to play Youtube videos directly
+  (also requires ytdl=yes in ~/.config/mpv/mpv.conf)
 - libx264/libmp3lame/libfdk-aac if you want to use encoding (you have to
   add these options explicitly to the ffmpeg options, as ffmpeg won't
   autodetect these libraries; see next section)
