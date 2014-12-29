@@ -14,4 +14,5 @@ echo "$BRANCH" > config/"$FILENAME"
 
 scripts/"$1"-clean
 
+echo "Run ./update to actually update the sources based on the new selection."
 echo "Run ./rebuild to update the source and to compile the selected branch."
