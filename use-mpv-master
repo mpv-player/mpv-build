@@ -1,4 +1,5 @@
 #!/bin/sh
 set -e
+export LC_ALL=C
 
 scripts/switch-branch mpv master
