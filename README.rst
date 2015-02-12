@@ -57,8 +57,10 @@ Essential dependencies (incomplete list):
 - Audio output development headers (libasound, pulseaudio)
 - fribidi, freetype, fontconfig development headers (for libass)
 - libjpeg
+- OpenSSL or GnuTLS development headers if you want to open https links
+  (this is also needed to make youtube-dl interaction work)
 - youtube-dl (at runtime) if you want to play Youtube videos directly
-  (also requires ytdl=yes in ~/.config/mpv/mpv.conf)
+  (a builtin mpv script will call it)
 - libx264/libmp3lame/libfdk-aac if you want to use encoding (you have to
   add these options explicitly to the ffmpeg options, as ffmpeg won't
   autodetect these libraries; see next section)
@@ -82,8 +84,6 @@ example, to enable some dependencies needed for encoding:
     echo --enable-libmp3lame >> ffmpeg_options
 
     echo --enable-libfdk-aac >> ffmpeg_options
-
-    echo --enable-nonfree    >> ffmpeg_options
 
 Do this in the mpv-build top-level directory (the same that contains
 the build scripts and this readme file). It must be done prior running
