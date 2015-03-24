@@ -5,20 +5,17 @@ This is a collection of scripts to make downloading and building mpv, ffmpeg
 and libass easier. ffmpeg and libass get special treatment, because they are
 essential, and distribution packages are often too old or too broken.
 
-See below for instructions for building Debian packages.
-
 If you are running Mac OSX and using homebrew we provide homebrew-mpv_, an up
 to date formula that compiles mpv with sensible dependencies and defaults for
 OSX.
 
-Instructions
-============
+Generic Instructions
+====================
 
-Make sure git is installed. E.g. on Debian or Ubuntu:
+(For Debian/Ubuntu see `Instructions for Debian and Ubuntu`_)
 
-    apt-get install git
-
-Also check that the dependencies listed at in the next section are installed.
+Make sure git is installed. Also check that the dependencies listed in
+the next section are installed.
 
 Checkout the build repo:
 
@@ -26,7 +23,7 @@ Checkout the build repo:
 
     cd mpv-build
 
-Get the ffmpeg, libass and mpv sources  and build them with:
+To get the ffmpeg, libass and mpv sources and build them, run the command:
 
     ./rebuild -j4
 
@@ -89,18 +86,24 @@ Do this in the mpv-build top-level directory (the same that contains
 the build scripts and this readme file). It must be done prior running
 ./build or ./rebuild.
 
-Installing dependencies on Debian or Ubuntu
-===========================================
+Instructions for Debian and Ubuntu
+==================================
 
-First make sure that you have the latest version of these build
-scripts, mpv, and its dependencies:
+Install some fundamental packages with the command:
+
+    apt-get install git devscripts equivs
+
+Now, to checkout the build repo, run:
+
+    git clone https://github.com/mpv-player/mpv-build.git
+
+    cd mpv-build
+
+To make sure that everything is up to date:
 
     ./update
 
-On Debian or Ubuntu systems, you can then install a fairly comprehensive
-list of build dependencies with the command
-
-    sudo apt-get install devscripts equivs
+Install the dependencies with:
 
     rm -f mpv-build-deps_*_*.deb
 
@@ -117,10 +120,7 @@ If you don't want to use sudo, you can also try:
 
     su -c 'dpkg -i mpv-build-deps_*_*.deb || apt-get install -f'
 
-Building a Debian package
-=========================
-
-You can build a full mpv Debian package with the following command:
+You can now build a full mpv Debian package with the following command:
 
     dpkg-buildpackage -uc -us -b -j4
 
@@ -135,6 +135,9 @@ built (as indicated in debian/changelog) and <architecture> with your
 architecture. As with the mpv-build-deps package, you should ensure
 you are installing the correct package and not one you previously
 compiled.
+
+To recompile a new package based on the latest sources, repeat the
+above steps starting with and including ``./update``.
 
 For further information regarding the Debian package, see
 debian/README.Debian.
