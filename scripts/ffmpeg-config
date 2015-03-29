@@ -7,7 +7,7 @@ USER_OPTS="$@"
 if test -f "$BUILD"/ffmpeg_options ; then
     USER_OPTS="$(cat "$BUILD"/ffmpeg_options) $USER_OPTS"
 fi
-OPTIONS="--enable-gpl --enable-nonfree --disable-debug --disable-doc"
+OPTIONS="--enable-gpl --disable-debug --disable-doc"
 
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --enable-pic"
@@ -19,12 +19,12 @@ OPTIONS="$OPTIONS $USER_OPTS"
 if ! ( echo "$OPTIONS" | grep -e --enable-openssl ) &&
    ! ( echo "$OPTIONS" | grep -e --enable-gnutls ) ;
 then
-    if pkg-config openssl ; then
-        OPTIONS="$OPTIONS --enable-openssl"
-        echo "Auto-enabling OpenSSL (creates a non-redistributable binary)."
-    elif pkg-config gnutls ; then
+    if pkg-config gnutls ; then
         OPTIONS="$OPTIONS --enable-gnutls"
         echo "Auto-enabling GnuTLS."
+    elif pkg-config openssl ; then
+        OPTIONS="$OPTIONS --enable-nonfree --enable-openssl"
+        echo "Auto-enabling OpenSSL (creates a non-redistributable binary)."
     fi
 fi
 
