@@ -66,7 +66,7 @@ ffmpeg_build: ffmpeg_config
 
 # put the config in the right place and drop the local/ since it's package managed now
 override_dh_auto_configure: ffmpeg_build libass_build
-	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv --enable-cdda # --enable-sdl2
+	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv # --enable-sdl2
 
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
