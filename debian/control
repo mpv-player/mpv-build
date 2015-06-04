@@ -40,7 +40,6 @@ Build-Depends:
  libpulse-dev,
  librubberband-dev,
  libschroedinger-dev,
-# libsdl2-dev
  libsmbclient-dev,
  libspeex-dev,
  libtheora-dev,
