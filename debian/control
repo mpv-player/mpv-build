@@ -45,6 +45,7 @@ Build-Depends:
  libtheora-dev,
  libtool,
  libtwolame-dev,
+ libuchardet-dev,
  libv4l-dev [!hurd-any],
  libva-dev [!hurd-any],
  libvdpau-dev,
