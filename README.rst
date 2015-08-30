@@ -39,9 +39,11 @@ Install mpv with:
 
     sudo ./install
 
-mpv doesn't need to be installed. The binary ./mpv/build/mpv can be used as-is. Note
-that libass and ffmpeg will be statically linked with mpv when using the
-provided scripts, and no ffmpeg or libass libraries are/need to be installed.
+mpv doesn't need to be installed. The binary ./mpv/build/mpv can be used as-is.
+You can copy it to /usr/local/bin manually. Note that libass and ffmpeg will be
+statically linked with mpv when using the provided scripts, and no ffmpeg or
+libass libraries are/need to be installed. There are no required config or
+data files either.
 
 Dependencies
 ============
@@ -88,6 +90,12 @@ the build scripts and this readme file). It must be done prior running
 
 Instructions for Debian and Ubuntu
 ==================================
+
+**Warning**: DO NOT USE THESE INSTRUCTIONS UNLESS YOU KNOW WHAT YOU ARE DOING.
+    These scripts are fragile (probably rather Debian's fault than ours). They
+    will often fail with weird errors that are hard to solve. They only exist
+    for users who want to hurt themselves. Use the generic instructions, unless
+    you really insist on having a Debian package as result.
 
 Install some fundamental packages with the command:
 
