@@ -58,6 +58,7 @@ ffmpeg_config: libass_build
 		--enable-libvorbis \
 		--enable-libvpx \
 		--enable-libwavpack \
+		--enable-ladspa \
 		--enable-gpl --enable-libxvid --enable-libx264 \
 		--enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libvo-aacenc --enable-libvo-amrwbenc
 
