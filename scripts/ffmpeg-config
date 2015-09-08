@@ -28,8 +28,17 @@ then
     fi
 fi
 
+case "$PKG_CONFIG_PATH" in
+  '')
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
+    ;;
+  *)
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+    ;;
+esac
+
 echo Using ffmpeg options: $OPTIONS
 
 mkdir -p "$BUILD"/ffmpeg_build
 cd "$BUILD"/ffmpeg_build
-PKG_CONFIG_PATH="$BUILD"/build_libs/lib/pkgconfig "$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS
+"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS
