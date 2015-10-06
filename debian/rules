@@ -2,13 +2,6 @@
 
 export DEB_BUILD_MAINT_OPTIONS:=hardening=+all
 
-# from official debian package: testing welcome!
-ifeq ($(DEB_HOST_ARCH_CPU),$(filter $(DEB_HOST_ARCH_CPU),powerpc sparc))
-	export CC=gcc-4.8 # fixes #73363
-endif
-ifeq ($(DEB_HOST_ARCH_CPU),arm)
-	export CC=$(shell which gcc-4.8 || which gcc-4.7;)
-endif
 # To enable parallel building:
 # You can either set DEB_BUILD_OPTIONS=paralell=<num-procs> in your build environment
 # or provide the -j<numprocs> option to debuild or dpkg-buildpackage, which
