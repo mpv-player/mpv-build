@@ -37,6 +37,7 @@ Build-Depends:
  libopencore-amrnb-dev,
  libopencore-amrwb-dev,
  libpulse-dev,
+ librtmp-dev,
  librubberband-dev,
  libschroedinger-dev,
  libsmbclient-dev,
