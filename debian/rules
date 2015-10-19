@@ -45,6 +45,7 @@ ffmpeg_config: libass_build
 		--enable-libopus \
 		--enable-libpulse \
 		--enable-libschroedinger \
+		--enable-libsoxr \
 		--enable-libspeex \
 		--enable-libtheora \
 		--enable-libtwolame \

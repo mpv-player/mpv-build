@@ -41,6 +41,7 @@ Build-Depends:
  librubberband-dev,
  libschroedinger-dev,
  libsmbclient-dev,
+ libsoxr-dev,
  libspeex-dev,
  libtheora-dev,
  libtool,
