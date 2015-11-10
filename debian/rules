@@ -39,6 +39,7 @@ libass_build: libass_config
 ffmpeg_config: libass_build
 	scripts/ffmpeg-config \
 		--enable-gnutls \
+		--enable-libgme \
 		--enable-libgsm \
 		--enable-libmp3lame \
 		--enable-libopenjpeg \
@@ -47,6 +48,7 @@ ffmpeg_config: libass_build
 		--enable-libschroedinger \
 		--enable-libsoxr \
 		--enable-libspeex \
+		--enable-libssh \
 		--enable-libtheora \
 		--enable-libtwolame \
 		--enable-libvorbis \
