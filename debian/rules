@@ -41,6 +41,7 @@ ffmpeg_config: libass_build
 		--enable-gnutls \
 		--enable-libgme \
 		--enable-libgsm \
+		--enable-libmodplug \
 		--enable-libmp3lame \
 		--enable-libopenjpeg \
 		--enable-libopus \
@@ -64,7 +65,7 @@ ffmpeg_build: ffmpeg_config
 
 # put the config in the right place and drop the local/ since it's package managed now
 override_dh_auto_configure: ffmpeg_build libass_build
-	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv --enable-egl-x11
+	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv --enable-egl-x11 --enable-openal
 
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
