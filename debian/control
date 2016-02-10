@@ -55,7 +55,6 @@ Build-Depends:
  libva-dev [!hurd-any],
  libvdpau-dev,
  libvorbis-dev,
- libvo-aacenc-dev,
  libvo-amrwbenc-dev,
  libvpx-dev,
  libwavpack-dev,
