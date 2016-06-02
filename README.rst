@@ -162,17 +162,24 @@ In general, changes to the mpv-build repository itself are relatively safe,
 keeping branches in sub-repositories might be ok, and making local, uncommitted
 changes in sub-repositories will break.
 
-Forcing master versions for some parts
-======================================
+Selecting release vs. master versions
+=====================================
+
+By default, mpv, ffmpeg and libass use the git master versions. These are
+bleeding edge, but should usually work fine. To get a stable (slightly stale)
+version, you can use release versions. Note that at least for mpv, releases
+are not actually maintained - releases are for Linux distributions, which are
+expected to maintain them and to backport bug fixes (which they usually fail
+to do).
 
 The following command can be used to delete all local changes, and to checkout
-the current master version for mpv:
-
-    ./use-mpv-master
-
-And run ``./rebuild`` or similar. Use this to switch back to the latest release:
+the latest release version of mpv:
 
     ./use-mpv-release
+
+And run ``./rebuild`` or similar. Use this to switch back to git master:
+
+    ./use-mpv-master
 
 Likewise, you can use ``./use-ffmpeg-master`` and ``./use-ffmpeg-release`` to
 switch between git master and the latest FFmpeg release.

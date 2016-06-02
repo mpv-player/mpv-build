@@ -59,10 +59,10 @@ do_fixedref()
     )
 }
 
-checkout_ffmpeg=do_releasetag
+checkout_ffmpeg=do_gitmaster
 checkout_fribidi=do_releasetag
 checkout_libass=do_gitmaster
-checkout_mpv=do_releasetag
+checkout_mpv=do_gitmaster
 
 checkout_all()
 {
