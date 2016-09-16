@@ -70,7 +70,6 @@ Build-Depends:
  pkg-config,
  python,
  python-docutils,
- rst2pdf,
  x11proto-core-dev,
  yasm,
  zlib1g-dev
