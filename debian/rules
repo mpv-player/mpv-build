@@ -43,6 +43,7 @@ ffmpeg_config: libass_build
 		--enable-libgsm \
 		--enable-libmodplug \
 		--enable-libmp3lame \
+		--enable-netcdf \
 		--enable-libopenjpeg \
 		--enable-libopus \
 		--enable-libpulse \
