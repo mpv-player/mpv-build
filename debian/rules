@@ -46,7 +46,6 @@ ffmpeg_config: libass_build
 		--enable-netcdf \
 		--enable-libopus \
 		--enable-libpulse \
-		--enable-libschroedinger \
 		--enable-libsoxr \
 		--enable-libspeex \
 		--enable-libssh \
