@@ -43,7 +43,6 @@ Build-Depends:
  libpulse-dev,
  librtmp-dev,
  librubberband-dev,
- libschroedinger-dev,
  libsmbclient-dev,
  libssh-dev,
  libsoxr-dev,
