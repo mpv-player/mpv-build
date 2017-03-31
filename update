@@ -17,7 +17,7 @@ do_clone()
 do_clone_all()
 {
     do_clone "ffmpeg"   "https://github.com/FFmpeg/FFmpeg.git"
-    do_clone "fribidi"  "http://anongit.freedesktop.org/git/fribidi/fribidi.git"
+    #do_clone "fribidi"  "http://anongit.freedesktop.org/git/fribidi/fribidi.git"
     do_clone "libass"   "https://github.com/libass/libass.git"
     do_clone "mpv"      "https://github.com/mpv-player/mpv.git"
 }
@@ -60,7 +60,7 @@ do_fixedref()
 }
 
 checkout_ffmpeg=do_gitmaster
-checkout_fribidi=do_releasetag
+#checkout_fribidi=do_releasetag
 checkout_libass=do_gitmaster
 checkout_mpv=do_gitmaster
 
@@ -69,7 +69,7 @@ checkout_all()
     set -ex
     do_clone_all
     $checkout_ffmpeg ffmpeg  'n'
-    $checkout_fribidi fribidi ''
+    #$checkout_fribidi fribidi ''
     $checkout_libass libass
     $checkout_mpv mpv     'v'
 }
@@ -116,7 +116,7 @@ checkout_mpv=`select_branch mpv $checkout_mpv`
 case "$1" in
     --master)
         checkout_ffmpeg=do_gitmaster
-        checkout_fribidi=do_gitmaster
+        #checkout_fribidi=do_gitmaster
         checkout_libass=do_gitmaster
         checkout_mpv=do_gitmaster
         ;;
