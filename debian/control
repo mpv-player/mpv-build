@@ -35,7 +35,6 @@ Build-Depends:
  liblua5.2-dev | liblua5.1-0-dev,
  libmodplug-dev,
  libmp3lame-dev,
- libnetcdf-dev,
  libopenal-dev,
  libopus-dev,
  libopencore-amrnb-dev,
