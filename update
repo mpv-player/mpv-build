@@ -27,7 +27,7 @@ do_gitmaster()
     set -ex
     (
         cd "$1"
-        git checkout origin/master^0
+        git checkout origin/master
         git remote prune origin
     )
 }
@@ -47,7 +47,7 @@ do_releasetag()
     (
         cd "$1"
         version=`git tag | grep -v rc | grep -v dev | versort_with_prefix "$2" | tail -n 1`
-        git checkout refs/tags/"$version"^0
+        git checkout refs/tags/"$version"
     )
 }
 
@@ -55,7 +55,7 @@ do_fixedref()
 {
     (
         cd "$1"
-        git checkout "$2"^0
+        git checkout "$2"
     )
 }
 
