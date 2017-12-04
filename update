@@ -65,21 +65,24 @@ do_fixedref()
     )
 }
 
-# args: $1: project name, $2: release/master [,$3: non-empty to ignore the config file]
+# args: $1: project name, $2: release/master/@foo [,$3: non-empty to ignore the config file]
 checkout()
 {
-    local arg="$2"
+    local branch="$2"
     if [ -z "$3" ] && [ -d config/ ] && [ -f config/branch-$1 ]; then
-        arg="$(cat config/branch-$1)"
+        branch="$(cat config/branch-$1)"
     fi
 
-    case "$arg" in
+    case "$branch" in
         master)  do_gitmaster $1;;
-        *)       do_releasetag $1;;
+        release) do_releasetag $1;;
+        @*)      do_fixedref $1 "${branch#@}";;  # everything after the '@' prefix
+        *)       >&2 printf "%s\n" "Error: Don't know how to checkout '$branch'"
+                 return 1
     esac
 }
 
-# fallback targets: release/master if no config file
+# fallback targets: release/master/@foo if no config file
 checkout_ffmpeg=master
 #checkout_fribidi=release
 checkout_libass=master

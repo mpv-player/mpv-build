@@ -181,8 +181,13 @@ And run ``./rebuild`` or similar. Use this to switch back to git master:
 
     ./use-mpv-master
 
-Likewise, you can use ``./use-ffmpeg-master`` and ``./use-ffmpeg-release`` to
-switch between git master and the latest FFmpeg release.
+Or this to switch to a custom tag/branch/commit FOO:
+
+    ./use-mpv-custom FOO
+
+Likewise, you can use ``./use-ffmpeg-master``, ``./use-ffmpeg-release`` or
+``./use-ffmpeg-custom BAR`` to switch between git master, the latest FFmpeg
+release, or to a custom tag/branch/commit BAR.
 
 Use on your own risk.
 
