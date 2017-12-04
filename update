@@ -44,9 +44,15 @@ versort_with_prefix()
 
 do_releasetag()
 {
+    local prefix=  # by default, don't use a prefix
+    case "$1" in
+        ffmpeg) prefix=n;;  # e.g. n3.3.1
+        mpv)    prefix=v;;  # e.g. v0.26.0
+    esac
+
     (
         cd "$1"
-        version=`git tag | grep -v rc | grep -v dev | versort_with_prefix "$2" | tail -n 1`
+        version=`git tag | grep -v rc | grep -v dev | versort_with_prefix "$prefix" | tail -n 1`
         git checkout refs/tags/"$version"
     )
 }
@@ -59,19 +65,35 @@ do_fixedref()
     )
 }
 
-checkout_ffmpeg=do_gitmaster
-#checkout_fribidi=do_releasetag
-checkout_libass=do_gitmaster
-checkout_mpv=do_gitmaster
+# args: $1: project name, $2: release/master [,$3: non-empty to ignore the config file]
+checkout()
+{
+    local arg="$2"
+    if [ -z "$3" ] && [ -d config/ ] && [ -f config/branch-$1 ]; then
+        arg="$(cat config/branch-$1)"
+    fi
+
+    case "$arg" in
+        master)  do_gitmaster $1;;
+        *)       do_releasetag $1;;
+    esac
+}
+
+# fallback targets: release/master if no config file
+checkout_ffmpeg=master
+#checkout_fribidi=release
+checkout_libass=master
+checkout_mpv=master
+
 
 checkout_all()
 {
     set -ex
     do_clone_all
-    $checkout_ffmpeg ffmpeg  'n'
-    #$checkout_fribidi fribidi ''
-    $checkout_libass libass
-    $checkout_mpv mpv     'v'
+    checkout ffmpeg $checkout_ffmpeg
+    #$checkout fribidi $checkout_fribidi
+    checkout libass $checkout_libass
+    checkout mpv $checkout_mpv
 }
 
 do_bootstrap()
@@ -93,36 +115,17 @@ if [ x"$1" != x"--skip-selfupdate" ]; then
 fi
 shift
 
-select_branch()
-{
-    if [ -d config/ ] && [ -f config/"branch-$1" ]; then
-        case `cat config/"branch-$1"` in
-        master)
-            echo do_gitmaster
-            ;;
-        *)
-            # "release" is the defined value; but default anything else to it
-            echo do_releasetag
-            ;;
-        esac
-    else
-        echo "$2"
-    fi
-}
-
-checkout_ffmpeg=`select_branch ffmpeg $checkout_ffmpeg`
-checkout_mpv=`select_branch mpv $checkout_mpv`
-
+# allow checkout master/release without checking the config files
 case "$1" in
     --master)
-        checkout_ffmpeg=do_gitmaster
-        #checkout_fribidi=do_gitmaster
-        checkout_libass=do_gitmaster
-        checkout_mpv=do_gitmaster
+        checkout_ffmpeg="master -"
+        #checkout_fribidi="master -"
+        checkout_libass="master -"
+        checkout_mpv="master -"
         ;;
     --release)
-        checkout_ffmpeg=do_releasetag
-        checkout_mpv=do_releasetag
+        checkout_ffmpeg="release -"
+        checkout_mpv="release -"
         ;;
     '')
         ;;
