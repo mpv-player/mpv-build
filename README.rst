@@ -12,8 +12,6 @@ OSX.
 Generic Instructions
 ====================
 
-(For Debian/Ubuntu see `Instructions for Debian and Ubuntu`_)
-
 Make sure git is installed. Also check that the dependencies listed in
 the next section are installed.
 
@@ -88,67 +86,6 @@ Do this in the mpv-build top-level directory (the same that contains
 the build scripts and this readme file). It must be done prior running
 ./build or ./rebuild.
 
-Instructions for Debian and Ubuntu
-==================================
-
-**Warning**: DO NOT USE THESE INSTRUCTIONS UNLESS YOU KNOW WHAT YOU ARE DOING.
-    These scripts are fragile (probably rather Debian's fault than ours). They
-    will often fail with weird errors that are hard to solve. They only exist
-    for users who want to hurt themselves. Use the generic instructions, unless
-    you really insist on having a Debian package as result.
-
-Install some fundamental packages with the command:
-
-    apt-get install git devscripts equivs
-
-Now, to checkout the build repo, run:
-
-    git clone https://github.com/mpv-player/mpv-build.git
-
-    cd mpv-build
-
-To make sure that everything is up to date:
-
-    ./update
-
-Install the dependencies with:
-
-    rm -f mpv-build-deps_*_*.deb
-
-    mk-build-deps -s sudo -i
-
-This will generate and install a dummy package that depends on the
-required packages. The rm -f command makes sure there are no previous
-versions of the build-deps package lying around that may otherwise
-confuse mk-build-deps.
-
-If you don't want to use sudo, you can also try:
-
-    mk-build-deps
-
-    su -c 'dpkg -i mpv-build-deps_*_*.deb || apt-get install -f'
-
-You can now build a full mpv Debian package with the following command:
-
-    dpkg-buildpackage -uc -us -b -j4
-
-"4" is the number of jobs running in parallel - change it to match
-your number of processors. The file mpv_<version>_<architecture>.deb
-will be created in the parent directory. Install it with
-
-    sudo dpkg -i ../mpv_<version>_<architecture>.deb
-
-where you must replace <version> with the version of mpv you just
-built (as indicated in debian/changelog) and <architecture> with your
-architecture. As with the mpv-build-deps package, you should ensure
-you are installing the correct package and not one you previously
-compiled.
-
-To recompile a new package based on the latest sources, repeat the
-above steps starting with and including ``./update``.
-
-For further information regarding the Debian package, see
-debian/README.Debian.
 
 Local changes to the git repositories
 =====================================
@@ -210,8 +147,6 @@ You can enable building libmpv by enabling the configure option:
 
 Note that this will make the mpv-build scripts also enable PIC for all used
 libraries. For this reason, be sure to run ``./clean`` before rebuilding.
-
-The Debian packaging scripts do not support libmpv yet.
 
 Contact
 =======
