@@ -1,0 +1,86 @@
+Source: mpv
+Section: misc
+Priority: optional
+Maintainer: Kevin Mitchell <kevmitch@gmail.com>
+Standards-Version: 3.9.3
+Build-Depends:
+ autoconf,
+ automake,
+ c-compiler | gcc,
+ debhelper (>= 7),
+ ladspa-sdk,
+ libasound2-dev [linux-any],
+ libbluray-dev,
+ libbs2b-dev,
+ libcaca-dev,
+ libcdio-paranoia-dev,
+ libdvdnav-dev,
+ libdvdread-dev,
+ libegl1-mesa-dev,
+ libfontconfig-dev,
+ libfreetype6-dev,
+ libfribidi-dev,
+ libgl1-mesa-dev,
+ libgbm-dev,
+ libgme-dev,
+ libgnutls-dev | libgnutls28-dev,
+ libgsm1-dev,
+ libharfbuzz-dev,
+ libjack-jackd2-dev | libjack-dev,
+ libjpeg-dev,
+ liblcms2-dev,
+ liblircclient-dev,
+ liblua5.2-dev | liblua5.1-0-dev,
+ libmodplug-dev,
+ libmp3lame-dev,
+ libopenal-dev,
+ libopus-dev,
+ libopencore-amrnb-dev,
+ libopencore-amrwb-dev,
+ libpulse-dev,
+ librtmp-dev,
+ librubberband-dev,
+ libsmbclient-dev,
+ libssh-dev,
+ libsoxr-dev,
+ libspeex-dev,
+ libtheora-dev,
+ libtool,
+ libtwolame-dev,
+ libuchardet-dev,
+ libv4l-dev [!hurd-any],
+ libva-dev [!hurd-any],
+ libvdpau-dev,
+ libvorbis-dev,
+ libvo-amrwbenc-dev,
+ libvpx-dev,
+ libwavpack-dev,
+ libx264-dev,
+ libx11-dev,
+ libxext-dev,
+ libxinerama-dev,
+ libxrandr-dev,
+ libxss-dev,
+ libxv-dev,
+ libxvidcore-dev,
+ pkg-config,
+ python,
+ python-docutils,
+ x11proto-core-dev,
+ yasm,
+ zlib1g-dev
+
+Package: mpv
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends:
+ libgl1-mesa-dri,
+ i965-va-driver | libva-intel-vaapi-driver | va-driver,
+ mesa-vdpau-drivers | nvidia-vdpau-driver | nvidia-driver-binary | nvidia-current | vdpau-driver
+Suggests: libaacs0
+Description: mplayer/mplayer2 based video player
+ MPV is a versatile CLI movie player, based on mplayer and mplayer2.
+ .
+ This package is not part of Debian. It was created by mpv-build scripts with
+ statically linked ffmpeg (not libav) and libass from upstream.
+Homepage:https://github.com/mpv-player/mpv-build

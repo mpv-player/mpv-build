@@ -104,6 +104,11 @@ do_bootstrap()
   scripts/mpv-bootstrap
 }
 
+do_update_debian_versions()
+{
+  scripts/debian-update-versions $1
+}
+
 if [ x"$1" != x"--skip-selfupdate" ]; then
     (
         set -ex
@@ -135,5 +140,7 @@ case "$1" in
 esac
 
 checkout_all
+
+do_update_debian_versions
 
 do_bootstrap
