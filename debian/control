@@ -80,5 +80,5 @@ Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.
  .
  This package is not part of Debian. It was created by mpv-build scripts with
- statically linked ffmpeg (not libav) and libass from upstream.
+ statically linked ffmpeg and libass from upstream.
 Homepage:https://github.com/mpv-player/mpv-build
