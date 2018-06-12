@@ -17,7 +17,8 @@ OPTIONS="$OPTIONS $USER_OPTS"
 
 # Do FFmpeg's job.
 if ! ( echo "$OPTIONS" | grep -q -e --enable-openssl ) &&
-   ! ( echo "$OPTIONS" | grep -q -e --enable-gnutls ) ;
+   ! ( echo "$OPTIONS" | grep -q -e --enable-gnutls ) &&
+   ! ( echo "$OPTIONS" | grep -q -e --enable-mbedtls ) ;
 then
     if pkg-config gnutls ; then
         OPTIONS="$OPTIONS --enable-gnutls"
