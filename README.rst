@@ -5,10 +5,6 @@ This is a collection of scripts to make downloading and building mpv, ffmpeg
 and libass easier. ffmpeg and libass get special treatment, because they are
 essential, and distribution packages are often too old or too broken.
 
-If you are running Mac OSX and using homebrew we provide homebrew-mpv_, an up
-to date formula that compiles mpv with sensible dependencies and defaults for
-OSX.
-
 Generic Instructions
 ====================
 
@@ -192,4 +188,3 @@ Report bugs to the `issues tracker`_ provided by GitHub to send us bug
 reports or feature requests.
 
 .. _issues tracker: https://github.com/mpv-player/mpv/issues
-.. _homebrew-mpv: https://github.com/mpv-player/homebrew-mpv
