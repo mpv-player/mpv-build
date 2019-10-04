@@ -65,8 +65,7 @@ override_dh_auto_configure: ffmpeg_build libass_build
 		--enable-openal \
 		--enable-dvdnav \
 		--enable-cdda \
-		--enable-libsmbclient \
-		--enable-zsh-comp
+		--enable-libsmbclient
 
 override_dh_auto_build:
 	scripts/mpv-build $(WAFLAGS)
