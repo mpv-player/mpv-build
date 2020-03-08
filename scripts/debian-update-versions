@@ -4,20 +4,20 @@ get_version()
 {
     (
         cd $1 > /dev/null
-	      VERSION=1:$(git name-rev --name-only --tags HEAD | sed -e 's/^[^0-9]*//' -e 's/\^0$//')
+        VERSION=1:$(git name-rev --name-only --tags HEAD | sed -e 's/^[^0-9]*//' -e 's/\^0$//')
         if [ "$VERSION" = "1:" ]; then
-	          TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
-	          COMMIT=$(git rev-parse --short HEAD)
+            TIMESTAMP=$(git log -1 --date=short --format=%cd | sed 's/-/./g')
+            COMMIT=$(git rev-parse --short HEAD)
             VERSION="2:${TIMESTAMP}.${COMMIT}"
         fi
-	      echo ${VERSION}
+        echo ${VERSION}
     )
 }
 
 do_subst() {
     sed  -e "0,/^mpv (.*)/s/(.*)/($1)/" \
-	      -e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
-	      -e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
+         -e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
+         -e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
 
 do_subst $(get_version mpv) $(get_version ffmpeg) $(get_version libass)
