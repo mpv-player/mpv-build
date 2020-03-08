@@ -14,6 +14,7 @@ Build-Depends:
  libbs2b-dev,
  libcaca-dev,
  libcdio-paranoia-dev,
+ libdrm-dev,
  libdvdnav-dev,
  libegl1-mesa-dev,
  libfontconfig-dev,
