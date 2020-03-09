@@ -11,6 +11,7 @@ Build-Depends:
  ladspa-sdk,
  libasound2-dev [linux-any],
  libarchive-dev,
+ libaom-dev,
  libbluray-dev,
  libbs2b-dev,
  libcaca-dev,
