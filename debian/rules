@@ -39,7 +39,7 @@ libass_build: libass_config
 ffmpeg_config: libass_build
 	scripts/ffmpeg-config \
 		--enable-gnutls \
-		--enable-libaom \
+		--enable-libdav1d \
 		--enable-libgme \
 		--enable-libgsm \
 		--enable-libmodplug \
