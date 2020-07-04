@@ -30,6 +30,7 @@ Build-Depends:
  libharfbuzz-dev,
  libjack-jackd2-dev | libjack-dev,
  libjpeg-dev,
+ libbrotli-dev,
  liblcms2-dev,
  liblircclient-dev,
  liblua5.2-dev | liblua5.1-0-dev,
