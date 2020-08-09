@@ -67,7 +67,7 @@ Build-Depends:
  libxvidcore-dev,
  pkg-config,
  python,
- python-docutils,
+ python-docutils | python3-docutils,
  x11proto-core-dev,
  yasm,
  zlib1g-dev
