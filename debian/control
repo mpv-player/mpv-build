@@ -54,7 +54,6 @@ Build-Depends:
  libvorbis-dev,
  libvo-amrwbenc-dev,
  libvpx-dev,
- libwavpack-dev,
  libwayland-dev,
  libx264-dev,
  libx11-dev,

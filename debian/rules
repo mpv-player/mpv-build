@@ -51,7 +51,6 @@ ffmpeg_config: libass_build
 		--enable-libssh \
 		--enable-libvorbis \
 		--enable-libvpx \
-		--enable-libwavpack \
 		--enable-ladspa \
 		--enable-libbs2b \
 		--enable-gpl --enable-libxvid --enable-libx264 \
