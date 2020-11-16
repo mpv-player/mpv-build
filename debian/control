@@ -65,7 +65,7 @@ Build-Depends:
  libxv-dev,
  libxvidcore-dev,
  pkg-config,
- python,
+ python | python2 | python3,
  python-docutils | python3-docutils,
  x11proto-core-dev,
  yasm,
