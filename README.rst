@@ -62,6 +62,10 @@ Note: most dependencies are optional and autodetected. If they're missing,
 these features will be disabled silently. This includes some dependencies
 which could be considered essential.
 
+If you use pkgsrc on macOS you can use::
+
+    pkgin in nasm automake autoconf libtool pkgconf freetype2 fribidi fontconfig harfbuzz lua51
+
 Enabling optional ffmpeg dependencies
 =====================================
 
@@ -115,6 +119,14 @@ indicated in debian/changelog) and <architecture> with your architecture.
 
 To keep your package up to date, simply repeat the above commands after running
 the `./update` script in the mpv-build root directory from time to time.
+
+Making a .app for macOS
+=======================
+
+After building successfully::
+
+    cd mpv
+    ./TOOLS/osxbundle.py build/mpv && open build
 
 Local changes to the git repositories
 =====================================
