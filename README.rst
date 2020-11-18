@@ -100,10 +100,10 @@ package::
 
     mk-build-deps -s sudo -i
 
-Debian no longer provides an unversioned "python" binary, so you need to
-create your own symlink from python3 (or python2) if this is the cae::
+Debian no longer provides an unversioned "python" binary on its own. You need to
+explicitly tell it to create a symlink to python3 if this is the case::
 
-    which python || sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 3
+    which python || sudo apt-get install python-is-python3
 
 You can now build the mpv Debian package with the following command::
 
