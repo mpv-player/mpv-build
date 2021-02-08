@@ -76,7 +76,7 @@ DOCDEST=debian/mpv/usr/share/doc/mpv
 TOOLSDEST=$(DOCDEST)/TOOLS
 # call waf to install to the debian packageing dir
 override_dh_auto_install:
-	cd mpv && python waf -v install --destdir=../debian/mpv
+	cd mpv && python3 waf -v install --destdir=../debian/mpv
 
 # for manually installed dependencies
 override_dh_shlibdeps:
