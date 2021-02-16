@@ -21,4 +21,4 @@ esac
 echo Using mpv options: $OPTIONS
 
 cd "$BUILD"/mpv
-./waf configure $OPTIONS
+python3 ./waf configure $OPTIONS
