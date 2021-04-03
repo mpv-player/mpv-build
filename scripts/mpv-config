@@ -18,6 +18,10 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
+# add missing private dependencies from libass.pc
+# this is necessary due to the hybrid static / dynamic nature of the build
+export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi)"
+
 echo Using mpv options: $OPTIONS
 
 cd "$BUILD"/mpv
