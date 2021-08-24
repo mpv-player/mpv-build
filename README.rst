@@ -182,7 +182,7 @@ The Debian packaging scripts do not currently support libmpv.
 Contact
 =======
 
-You can find us on IRC in ``#mpv`` on ``irc.freenode.net``
+You can find us on IRC in ``#mpv`` on ``irc.libera.chat``
 
 Report bugs to the `issues tracker`_ provided by GitHub to send us bug
 reports or feature requests.
