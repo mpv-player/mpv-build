@@ -82,6 +82,8 @@ example, to enable some dependencies needed for encoding::
 
     printf "%s\n" --enable-libfdk-aac >> ffmpeg_options
 
+    printf "%s\n" --enable-nonfree    >> ffmpeg_options
+
 Do this in the mpv-build top-level directory (the same that contains
 the build scripts and this readme file). It must be done prior running
 ./build or ./rebuild.
