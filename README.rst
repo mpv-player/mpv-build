@@ -77,6 +77,8 @@ example, to enable some dependencies needed for encoding::
     echo --enable-libmp3lame >> ffmpeg_options
 
     echo --enable-libfdk-aac >> ffmpeg_options
+    
+    echo --enable-nonfree >> ffmpeg_options
 
 Do this in the mpv-build top-level directory (the same that contains
 the build scripts and this readme file). It must be done prior running
