@@ -3,10 +3,10 @@ set -e
 export LC_ALL=C
 
 #scripts/fribidi-config
-#scripts/fribidi-build $@
+#scripts/fribidi-build "$@"
 scripts/libass-config
-scripts/libass-build $@
+scripts/libass-build "$@"
 scripts/ffmpeg-config
-scripts/ffmpeg-build $@
+scripts/ffmpeg-build "$@"
 scripts/mpv-config
-scripts/mpv-build $@
+scripts/mpv-build "$@"

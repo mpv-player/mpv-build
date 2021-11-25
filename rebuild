@@ -4,4 +4,4 @@ export LC_ALL=C
 
 ./update
 ./clean
-./build $@
+./build "$@"

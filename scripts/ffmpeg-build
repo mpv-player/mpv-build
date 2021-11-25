@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-make -C ffmpeg_build install $@
+make -C ffmpeg_build install "$@"
