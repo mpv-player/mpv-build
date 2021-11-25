@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-make -C libass install $@
+make -C libass install "$@"
