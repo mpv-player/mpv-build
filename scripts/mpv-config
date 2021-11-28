@@ -2,9 +2,13 @@
 set -e
 
 BUILD="$(pwd)"
+newline="
+"
 
 if test -f "$BUILD"/mpv_options ; then
+    IFS=$newline
     set -- $(cat "$BUILD"/mpv_options) "$@"
+    unset -v IFS
 fi
 
 case "$PKG_CONFIG_PATH" in

@@ -2,9 +2,13 @@
 set -e
 
 BUILD="$(pwd)"
+newline="
+"
 
 if test -f "$BUILD"/ffmpeg_options ; then
+    IFS=$newline
     set -- $(cat "$BUILD"/ffmpeg_options) "$@"
+    unset -v IFS
 fi
 
 OPTIONS="--enable-gpl --disable-debug --disable-doc"

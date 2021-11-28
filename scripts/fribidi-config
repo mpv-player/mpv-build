@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
 BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/fribidi_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/fribidi_options) "$@"
+    unset -v IFS
+fi
 
 OPTIONS=
 if "$BUILD"/scripts/test-libmpv ; then
