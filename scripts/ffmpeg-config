@@ -11,7 +11,7 @@ if test -f "$BUILD"/ffmpeg_options ; then
     unset -v IFS
 fi
 
-OPTIONS="--enable-gpl --disable-debug --disable-doc"
+OPTIONS="--enable-gpl --disable-debug --disable-doc --enable-static --disable-shared"
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --enable-pic"
 fi
@@ -43,4 +43,4 @@ echo Using ffmpeg options: $OPTIONS "$@"
 
 mkdir -p "$BUILD"/ffmpeg_build
 cd "$BUILD"/ffmpeg_build
-"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS "$@"
+"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs $OPTIONS "$@"
