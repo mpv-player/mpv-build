@@ -72,15 +72,39 @@ if the dependencies are not available.)
 You can put additional ffmpeg configure flags into ffmpeg_options. For
 example, to enable some dependencies needed for encoding::
 
-    echo --enable-libx264    >> ffmpeg_options
+    printf "%s\n" --enable-libx264    >> ffmpeg_options
 
-    echo --enable-libmp3lame >> ffmpeg_options
+    printf "%s\n" --enable-libmp3lame >> ffmpeg_options
 
-    echo --enable-libfdk-aac >> ffmpeg_options
+    printf "%s\n" --enable-libfdk-aac >> ffmpeg_options
 
 Do this in the mpv-build top-level directory (the same that contains
 the build scripts and this readme file). It must be done prior running
 ./build or ./rebuild.
+
+NAME_options files (where NAME is ffmpeg/mpv/libass/fribidi)
+============================================================
+
+These files can hold custom configure options which are passed to the
+respective configure scripts.
+
+Empty lines are ignored, and every non-empty line becomes a single verbatim
+argument (including leading and/or trailing spaces) when invoking the
+respective configure script.
+
+This means that shell quotes should *not* be placed at these files, and the
+values should not be indented.
+
+The files can hold arbitrary values, except empty values and values which
+contain newline[s].
+
+Except empty/with-newlines, any list of configure arguments, for instance::
+
+    ./configure   --thing=foo --libs="-L/bar -lbaz" -x abc +z
+
+can also be added to the file, like so::
+
+    printf "%s\n" --thing=foo --libs="-L/bar -lbaz" -x abc +z >> ffmpeg_options
 
 Instructions for Debian / Ubuntu package
 ========================================
@@ -172,7 +196,7 @@ Building libmpv
 
 You can enable building libmpv by enabling the configure option::
 
-    echo --enable-libmpv-shared > mpv_options
+    printf "%s\n" --enable-libmpv-shared > mpv_options
 
 Note that this will make the mpv-build scripts also enable PIC for all used
 libraries. For this reason, be sure to run ``./clean`` before rebuilding.
