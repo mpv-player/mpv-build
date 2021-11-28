@@ -10,11 +10,11 @@ if test -f "$BUILD"/fribidi_options ; then
     unset -v IFS
 fi
 
-OPTIONS=
+OPTIONS="--enable-static --disable-shared --without-glib"
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --with-pic"
 fi
 
 cd "$BUILD"/fribidi
 ./bootstrap
-./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared --without-glib $OPTIONS "$@"
+./configure --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
