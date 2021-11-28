@@ -2,8 +2,7 @@
 set -e
 BUILD="$(pwd)"
 
-OPTIONS="$@"
-
+OPTIONS=
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --with-pic"
 fi
@@ -19,6 +18,6 @@ esac
 
 cd "$BUILD"/libass
 # Later libass doesn't automatically run configure with autogen.sh anymore
-./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
-./configure  --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS
+./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS "$@"
+./configure  --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" --enable-static --disable-shared $OPTIONS "$@"
 

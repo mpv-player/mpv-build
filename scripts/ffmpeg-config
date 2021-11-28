@@ -3,17 +3,14 @@ set -e
 
 BUILD="$(pwd)"
 
-USER_OPTS="$@"
 if test -f "$BUILD"/ffmpeg_options ; then
-    USER_OPTS="$(cat "$BUILD"/ffmpeg_options) $USER_OPTS"
+    set -- $(cat "$BUILD"/ffmpeg_options) "$@"
 fi
-OPTIONS="--enable-gpl --disable-debug --disable-doc"
 
+OPTIONS="--enable-gpl --disable-debug --disable-doc"
 if "$BUILD"/scripts/test-libmpv ; then
     OPTIONS="$OPTIONS --enable-pic"
 fi
-
-OPTIONS="$OPTIONS $USER_OPTS"
 
 # Do FFmpeg's job.
 if ! ( echo "$OPTIONS" | grep -q -e --enable-openssl ) &&
@@ -38,8 +35,8 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-echo Using ffmpeg options: $OPTIONS
+echo Using ffmpeg options: $OPTIONS "$@"
 
 mkdir -p "$BUILD"/ffmpeg_build
 cd "$BUILD"/ffmpeg_build
-"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS
+"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --enable-static --disable-shared $OPTIONS "$@"

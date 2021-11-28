@@ -3,11 +3,9 @@ set -e
 
 BUILD="$(pwd)"
 
-USER_OPTS="$@"
 if test -f "$BUILD"/mpv_options ; then
-    USER_OPTS="$(cat "$BUILD"/mpv_options) $USER_OPTS"
+    set -- $(cat "$BUILD"/mpv_options) "$@"
 fi
-OPTIONS="$USER_OPTS"
 
 case "$PKG_CONFIG_PATH" in
   '')
@@ -22,7 +20,7 @@ esac
 # this is necessary due to the hybrid static / dynamic nature of the build
 export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi)"
 
-echo Using mpv options: $OPTIONS
+echo Using mpv options: "$@"
 
 cd "$BUILD"/mpv
-python3 ./waf configure $OPTIONS
+python3 ./waf configure "$@"
