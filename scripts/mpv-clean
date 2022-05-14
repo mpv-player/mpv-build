@@ -4,6 +4,3 @@ test -e mpv || exit 0
 cd mpv
 python3 ./waf distclean # waf clean
 rm -rf build # meson clean
-# waf might pick up some old-configure/makefile produced files
-# also, waf clean won't remove the old binary
-rm -f DOCS/man/*/mpv.1 version.h input/input_conf.h video/out/vdpau_template.c demux/ebml_types.h demux/ebml_defs.c video/out/gl_video_shaders.h video/out/x11_icon.inc sub/osd_font.h player/lua/defaults.inc player/lua/assdraw.inc player/lua/osc.inc mpv
