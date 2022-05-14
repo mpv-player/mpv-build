@@ -20,11 +20,15 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-# add missing private dependencies from libass.pc
-# this is necessary due to the hybrid static / dynamic nature of the build
-export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi)"
-
 echo Using mpv options: "$@"
 
 cd "$BUILD"/mpv
-python3 ./waf configure "$@"
+
+if [ "$BUILDSYSTEM" = "meson" ]; then
+    meson build -Dprefer_static=true -Dbuildtype=release "$@"
+else
+    # add missing private dependencies from libass.pc
+    # this is necessary due to the hybrid static / dynamic nature of the build
+    export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi)"
+    python3 ./waf configure "$@"
+fi

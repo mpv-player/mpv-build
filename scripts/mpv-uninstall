@@ -2,4 +2,8 @@
 set -e
 
 cd mpv
-python3 ./waf uninstall
+if [ "$BUILDSYSTEM" = "meson" ]; then
+    ninja uninstall -C build
+else
+    python3 ./waf uninstall
+fi

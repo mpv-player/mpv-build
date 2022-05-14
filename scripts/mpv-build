@@ -2,4 +2,8 @@
 set -e
 
 cd mpv
-python3 ./waf build "$@"
+if [ "$BUILDSYSTEM" = "meson" ]; then
+    meson compile -C build "$@"
+else
+    python3 ./waf build "$@"
+fi

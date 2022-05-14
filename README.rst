@@ -39,6 +39,21 @@ statically linked with mpv when using the provided scripts, and no ffmpeg or
 libass libraries are/need to be installed. There are no required config or
 data files either.
 
+Meson Support
+=============
+
+These scripts do have support for building with mpv's meson build. They are not
+used by default. To invoke them, you must pass an additional environment variable,
+BUILDSYSTEM=meson to your commands. For example::
+
+    BUILDSYSTEM=meson ./rebuild -j4
+
+The arguments that you pass should conform to meson conventions and not the waf
+ones.
+
+**Note**: The meson scripts specifically invoke the new ``prefer_static`` built-in
+option. This requires a meson version of 0.63 or greater.
+
 Dependencies
 ============
 
