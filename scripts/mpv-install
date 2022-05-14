@@ -2,4 +2,8 @@
 set -e
 
 cd mpv
-python3 ./waf install
+if [ "$BUILDSYSTEM" = "meson" ]; then
+    meson install -C build
+else
+    python3 ./waf install
+fi

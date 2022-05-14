@@ -8,8 +8,6 @@ BUILD="$(pwd)"
 
 USER_OPTS="$@"
 if test -f "$BUILD"/mpv_options ; then
-    if cat "$BUILD"/mpv_options | grep -e '--enable-libmpv' > /dev/null ; then
-        exit 0
-    fi
+    grep -Eqe '--enable-libmpv|-Dlibmpv=true' "$BUILD"/mpv_options && exit 0
 fi
 exit 1
