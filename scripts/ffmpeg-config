@@ -20,7 +20,7 @@ fi
 
 # Do FFmpeg's job.
 if ( echo "$OPTIONS" "$@" | \
-     grep -q -E -e "--enable-openssl|--enable-gnutls|--enable-mbedtls" )
+     grep -q -E -e "-openssl|-gnutls|-mbedtls|-libtls|-schannel|-securetransport" )
 then
     echo TLS/SSL user option specified, skipping autodetection
 else
