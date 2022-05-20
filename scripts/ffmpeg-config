@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo() { printf %s\\n "$*"; }  # depends on standard IFS (which we have)
+
 BUILD="$(pwd)"
 newline="
 "
@@ -17,10 +19,11 @@ if "$BUILD"/scripts/test-libmpv ; then
 fi
 
 # Do FFmpeg's job.
-if ! ( echo "$OPTIONS" "$@" | grep -q -e --enable-openssl ) &&
-   ! ( echo "$OPTIONS" "$@" | grep -q -e --enable-gnutls ) &&
-   ! ( echo "$OPTIONS" "$@" | grep -q -e --enable-mbedtls ) ;
+if ( echo "$OPTIONS" "$@" | \
+     grep -q -E -e "--enable-openssl|--enable-gnutls|--enable-mbedtls" )
 then
+    echo TLS/SSL user option specified, skipping autodetection
+else
     if pkg-config gnutls ; then
         OPTIONS="$OPTIONS --enable-gnutls"
         echo "Auto-enabling GnuTLS."
