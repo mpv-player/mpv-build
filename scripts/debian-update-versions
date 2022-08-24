@@ -16,8 +16,8 @@ get_version()
 
 do_subst() {
     sed  -e "0,/^mpv (.*)/s/(.*)/($1)/" \
-         -e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3/" \
+         -e "s/^  \* local build.*/  \* local build with ffmpeg $2, libass $3, libplacebo $4/" \
          -e"s/\(^ -- Local User <localuser@localhost>\).*/\1  $(date -R)/" debian/changelog.TEMPLATE > debian/changelog
 }
 
-do_subst $(get_version mpv) $(get_version ffmpeg) $(get_version libass)
+do_subst $(get_version mpv) $(get_version ffmpeg) $(get_version libass) $(get_version libplacebo)

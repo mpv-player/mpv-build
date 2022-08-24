@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+BUILD="$(pwd)"
+newline="
+"
+
+if test -f "$BUILD"/libplacebo_options ; then
+    IFS=$newline
+    set -- $(cat "$BUILD"/libplacebo_options) "$@"
+    unset -v IFS
+fi
+
+OPTIONS="--default-library static -Dtests=false -Ddemos=false"
+
+case "$PKG_CONFIG_PATH" in
+  '')
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
+    ;;
+  *)
+    export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+    ;;
+esac
+
+BUILDDIR="$BUILD"/libplacebo_build
+test -d "$BUILDDIR" && OPTIONS="$OPTIONS --wipe"
+mkdir -p "$BUILDDIR"
+cd "$BUILD"/libplacebo
+meson "$BUILDDIR" --prefix="$BUILD"/build_libs --libdir="$BUILD"/build_libs/lib $OPTIONS "$@"

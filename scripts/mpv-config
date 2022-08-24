@@ -29,6 +29,7 @@ if [ "$BUILDSYSTEM" = "meson" ]; then
 else
     # add missing private dependencies from libass.pc
     # this is necessary due to the hybrid static / dynamic nature of the build
-    export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi)"
+    # -lstdc++ is required by gslang (via libplacebo) and possibly others
+    export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi libplacebo) -lstdc++"
     python3 ./waf configure "$@"
 fi

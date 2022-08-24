@@ -11,6 +11,7 @@ do_clone()
         cd "$1"
         git remote set-url origin "$2"
         git fetch
+        git submodule update --init
     )
 }
 
@@ -20,6 +21,7 @@ do_clone_all()
     #do_clone "fribidi"  "http://anongit.freedesktop.org/git/fribidi/fribidi.git"
     do_clone "libass"   "https://github.com/libass/libass.git"
     do_clone "mpv"      "https://github.com/mpv-player/mpv.git"
+    do_clone "libplacebo" "https://github.com/haasn/libplacebo.git"
 }
 
 do_gitmaster()
@@ -47,7 +49,7 @@ do_releasetag()
     local prefix=  # by default, don't use a prefix
     case "$1" in
         ffmpeg) prefix=n;;  # e.g. n3.3.1
-        mpv)    prefix=v;;  # e.g. v0.26.0
+        mpv|libplacebo) prefix=v;;  # e.g. v0.26.0
     esac
 
     (
@@ -87,6 +89,7 @@ checkout_ffmpeg=master
 #checkout_fribidi=release
 checkout_libass=master
 checkout_mpv=master
+checkout_libplacebo=master
 
 
 checkout_all()
@@ -97,6 +100,7 @@ checkout_all()
     #$checkout fribidi $checkout_fribidi
     checkout libass $checkout_libass
     checkout mpv $checkout_mpv
+    checkout libplacebo $checkout_libplacebo
 }
 
 do_bootstrap()
@@ -125,10 +129,12 @@ case "$1" in
         #checkout_fribidi="master -"
         checkout_libass="master -"
         checkout_mpv="master -"
+        checkout_libplacebo="master -"
         ;;
     --release)
         checkout_ffmpeg="release -"
         checkout_mpv="release -"
+        checkout_libplacebo="release -"
         ;;
     '')
         ;;

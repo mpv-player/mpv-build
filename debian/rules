@@ -11,6 +11,7 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 # use MFLAGS, rather than MAKEFLAGS as the latter is used by make internally
 	MFLAGS += -j$(NUMJOBS)
 	WAFFLAGS += -j$(NUMJOBS)
+	NINJAFLAGS += -j$(NUMJOBS)
 endif
 
 # make .PHONY all the targets that have name collisions with the scripts
@@ -59,8 +60,14 @@ ffmpeg_config: libass_build
 ffmpeg_build: ffmpeg_config
 	scripts/ffmpeg-build $(MFLAGS)
 
+libplacebo_config:
+	scripts/libplacebo-config
+
+libplacebo_build: libplacebo_config
+	scripts/libplacebo-build $(NINJAFLAGS)
+
 # put the config in the right place and drop the local/ since it's package managed now
-override_dh_auto_configure: ffmpeg_build libass_build
+override_dh_auto_configure: ffmpeg_build libass_build libplacebo_build
 	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv \
 		--enable-openal \
 		--enable-dvdnav \

@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+
+ninja -C libplacebo_build install "$@"
