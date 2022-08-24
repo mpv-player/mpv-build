@@ -8,6 +8,7 @@ Build-Depends:
  automake,
  c-compiler | gcc,
  debhelper (>= 7),
+ glslang-dev,
  ladspa-sdk,
  libasound2-dev [linux-any],
  libarchive-dev,
@@ -19,6 +20,7 @@ Build-Depends:
  libdav1d-dev,
  libdvdnav-dev,
  libegl1-mesa-dev,
+ libepoxy-dev,
  libfontconfig-dev,
  libfreetype6-dev,
  libfribidi-dev,
@@ -53,7 +55,9 @@ Build-Depends:
  libvdpau-dev,
  libvorbis-dev,
  libvo-amrwbenc-dev,
+ libunwind-dev,
  libvpx-dev,
+ libvulkan-dev,
  libwayland-dev,
  libx264-dev,
  libx11-dev,
@@ -65,6 +69,8 @@ Build-Depends:
  libxss-dev,
  libxv-dev,
  libxvidcore-dev,
+ meson,
+ ninja-build,
  pkg-config,
  python3,
  python3-docutils,
@@ -84,5 +90,5 @@ Description: mplayer/mplayer2 based video player
  MPV is a versatile CLI movie player, based on mplayer and mplayer2.
  .
  This package is not part of Debian. It was created by mpv-build scripts with
- statically linked ffmpeg and libass from upstream.
+ statically linked ffmpeg, libass and libplacebo from upstream.
 Homepage:https://github.com/mpv-player/mpv-build
