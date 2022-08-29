@@ -124,9 +124,9 @@ can also be added to the file, like so::
 Instructions for Debian / Ubuntu package
 ========================================
 
-Run `./update` first. Note that the NAME_options files are respected - but may
+Run ``./update`` first. Note that the NAME_options files are respected - but may
 conflict with the built-in Debian build options. For best results one should
-modify the Debian build only at the files `debian/rules` and `debian/control`.
+customize the build only via the files ``debian/rules`` and ``debian/control``.
 
 To help track dependencies and installed files, there is the option to create a
 Debian package containing the mpv binary and documentation. This is considered
@@ -157,7 +157,7 @@ where you must replace <version> with the version of mpv you just built (as
 indicated in debian/changelog) and <architecture> with your architecture.
 
 To keep your package up to date, simply repeat the above commands after running
-the `./update` script in the mpv-build root directory from time to time.
+the ``./update`` script in the mpv-build root directory from time to time.
 
 Local changes to the git repositories
 =====================================
