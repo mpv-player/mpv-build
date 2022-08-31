@@ -1,6 +1,7 @@
 /ffmpeg
 /fribidi
 /libass
+/libplacebo
 /mpv
 /build_libs
 /ffmpeg_build
@@ -12,3 +13,4 @@
 /debian/mpv.postrm.debhelper
 /debian/mpv.substvars
 /config/
+/*_options
