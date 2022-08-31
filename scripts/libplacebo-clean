@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+if [ -d "libplacebo/build" ]; then
+    rm -r libplacebo/build
+fi

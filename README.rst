@@ -61,6 +61,7 @@ Essential dependencies (incomplete list):
 
 - gcc or clang, yasm, git
 - autoconf/autotools (for libass)
+- meson, ninja (libplacebo)
 - X development headers (xlib, X extensions, vdpau, GL, Xv, ...)
 - Audio output development headers (libasound, pulseaudio)
 - fribidi, freetype, fontconfig development headers (for libass)
@@ -170,12 +171,12 @@ changes in sub-repositories will break.
 Selecting release vs. master versions
 =====================================
 
-By default, mpv, ffmpeg and libass use the git master versions. These are
-bleeding edge, but should usually work fine. To get a stable (slightly stale)
-version, you can use release versions. Note that at least for mpv, releases
-are not actually maintained - releases are for Linux distributions, which are
-expected to maintain them and to backport bug fixes (which they usually fail
-to do).
+By default, mpv, ffmpeg, libplacebo and libass use the git master versions.
+These are bleeding edge, but should usually work fine. To get a stable
+(slightly stale) version, you can use release versions.
+Note that at least for mpv, releases are not actually maintained - releases
+are for Linux distributions, which are expected to maintain them and to
+backport bug fixes (which they usually fail to do).
 
 The following command can be used to delete all local changes, and to checkout
 the latest release version of mpv::
