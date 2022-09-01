@@ -70,12 +70,12 @@ Build-Depends:
  libxv-dev,
  libxvidcore-dev,
  meson,
+ nasm,
  ninja-build,
  pkg-config,
  python3,
  python3-docutils,
  x11proto-core-dev,
- yasm,
  zlib1g-dev
 
 Package: mpv
