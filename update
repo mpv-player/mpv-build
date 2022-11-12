@@ -103,11 +103,6 @@ checkout_all()
     checkout mpv $checkout_mpv
 }
 
-do_bootstrap()
-{
-  scripts/mpv-bootstrap
-}
-
 do_update_debian_versions()
 {
   scripts/debian-update-versions $1
@@ -147,5 +142,3 @@ esac
 checkout_all
 
 do_update_debian_versions
-
-do_bootstrap
