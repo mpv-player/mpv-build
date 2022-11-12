@@ -11,9 +11,8 @@ if test -f "$BUILD"/mpv_options ; then
     unset -v IFS
 fi
 
-OPTIONS=""
-if "$BUILD"/scripts/test-libmpv && [ "$BUILDSYSTEM" != "waf" ]; then
-    OPTIONS="$OPTIONS -Dc_link_args='-Wl,-Bsymbolic'"
+if "$BUILD"/scripts/test-libmpv; then
+    OPTIONS="-Dc_link_args='-Wl,-Bsymbolic'"
 fi
 
 case "$PKG_CONFIG_PATH" in
@@ -34,8 +33,4 @@ cd "$BUILD"/mpv
 # need to link against stdc++ in case libplacebo was built with glslang,
 # which requires that
 export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi) -lstdc++"
-if [ "$BUILDSYSTEM" = "waf" ]; then
-    python3 ./waf configure "$@"
-else
-    meson setup build -Dbuildtype=release $OPTIONS "$@"
-fi
+meson setup build -Dbuildtype=release $OPTIONS "$@"

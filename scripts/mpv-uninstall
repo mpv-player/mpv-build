@@ -2,8 +2,4 @@
 set -e
 
 cd mpv
-if [ "$BUILDSYSTEM" = "waf" ]; then
-    python3 ./waf uninstall
-else
-    ninja uninstall -C build
-fi
+ninja uninstall -C build

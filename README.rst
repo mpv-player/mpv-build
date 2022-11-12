@@ -43,26 +43,13 @@ data files either.
 in order to get a non-ancient version. Alternatively, you can install it from
 PyPi.
 
-Waf Support
-=============
-
-These scripts do have support for building with mpv's deprecated waf build. It is
-not used by default. To invoke it, you must pass an additional environment variable,
-BUILDSYSTEM=waf to your commands. For example::
-
-    BUILDSYSTEM=waf ./rebuild -j4
-
-The arguments that you pass should conform to waf conventions and not the meson
-ones.
-
 Dependencies
 ============
 
 Essential dependencies (incomplete list):
 
-- gcc or clang, yasm, git
+- gcc or clang, yasm, git, meson, ninja
 - autoconf/autotools (for libass)
-- meson, ninja (libplacebo)
 - X development headers (xlib, X extensions, vdpau, GL, Xv, ...)
 - Audio output development headers (libasound, pulseaudio)
 - fribidi, freetype, fontconfig development headers (for libass)

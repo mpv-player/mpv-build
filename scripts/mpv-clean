@@ -2,5 +2,4 @@
 test -e mpv || exit 0
 
 cd mpv
-python3 ./waf distclean # waf clean
-rm -rf build # meson clean
+rm -rf build
