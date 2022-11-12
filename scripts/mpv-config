@@ -25,7 +25,7 @@ echo Using mpv options: "$@"
 cd "$BUILD"/mpv
 
 if [ "$BUILDSYSTEM" = "meson" ]; then
-    meson build -Dprefer_static=true -Dbuildtype=release "$@"
+    meson setup build -Dprefer_static=true -Dbuildtype=release "$@"
 else
     # add missing private dependencies from libass.pc
     # this is necessary due to the hybrid static / dynamic nature of the build

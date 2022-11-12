@@ -27,4 +27,4 @@ cd "$BUILD"/libplacebo
 test -d build && OPTIONS="$OPTIONS --wipe"
 echo Using libplacebo options: $OPTIONS "$@"
 
-meson build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
+meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
