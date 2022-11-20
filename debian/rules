@@ -70,7 +70,9 @@ libplacebo_build: libplacebo_config
 override_dh_auto_configure: ffmpeg_build libass_build libplacebo_build
 	scripts/mpv-config --prefix=/usr \
 		-Dopenal=enabled \
+		-Ddvbin=enabled \
 		-Ddvdnav=enabled \
+		-Dsdl2=enabled \
 		-Dcdda=enabled
 
 override_dh_auto_build:
