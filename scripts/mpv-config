@@ -11,6 +11,11 @@ if test -f "$BUILD"/mpv_options ; then
     unset -v IFS
 fi
 
+OPTIONS=""
+if "$BUILD"/scripts/test-libmpv && [ "$BUILDSYSTEM" != "waf" ]; then
+    OPTIONS="$OPTIONS -Dc_link_args='-Wl,-Bsymbolic'"
+fi
+
 case "$PKG_CONFIG_PATH" in
   '')
     export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
@@ -20,7 +25,7 @@ case "$PKG_CONFIG_PATH" in
     ;;
 esac
 
-echo Using mpv options: "$@"
+echo Using mpv options: $OPTIONS "$@"
 
 cd "$BUILD"/mpv
 
@@ -32,5 +37,5 @@ export LDFLAGS="$LDFLAGS $(pkg-config --libs fontconfig harfbuzz fribidi) -lstdc
 if [ "$BUILDSYSTEM" = "waf" ]; then
     python3 ./waf configure "$@"
 else
-    meson setup build -Dbuildtype=release "$@"
+    meson setup build -Dbuildtype=release $OPTIONS "$@"
 fi
