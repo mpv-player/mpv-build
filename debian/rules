@@ -10,7 +10,7 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 # use MFLAGS, rather than MAKEFLAGS as the latter is used by make internally
 	MFLAGS += -j$(NUMJOBS)
-	WAFFLAGS += -j$(NUMJOBS)
+	MESONFLAGS += -j$(NUMJOBS)
 	NINJAFLAGS += -j$(NUMJOBS)
 endif
 
@@ -66,24 +66,20 @@ libplacebo_config:
 libplacebo_build: libplacebo_config
 	scripts/libplacebo-build $(NINJAFLAGS)
 
-# put the config in the right place and drop the local/ since it's package managed now
+# drop the local/ since it's package managed now
 override_dh_auto_configure: ffmpeg_build libass_build libplacebo_build
-	scripts/mpv-config --prefix=/usr --confdir=/etc/mpv \
-		--enable-openal \
-		--enable-dvdnav \
-		--enable-cdda
+	scripts/mpv-config --prefix=/usr \
+		-Dopenal=enabled \
+		-Ddvdnav=enabled \
+		-Dcdda=enabled
 
 override_dh_auto_build:
-	scripts/mpv-build $(WAFLAGS)
+	scripts/mpv-build $(MESONFLAGS)
 
-
-DOCSOURCE=mpv/DOCS
-TOOLSSOURCE=mpv/TOOLS
-DOCDEST=debian/mpv/usr/share/doc/mpv
-TOOLSDEST=$(DOCDEST)/TOOLS
-# call waf to install to the debian packageing dir
+# install mpv to the debian packageing dir
+# --destdir is relative to mpv/build
 override_dh_auto_install:
-	cd mpv && python3 waf -v install --destdir=../debian/mpv
+	scripts/mpv-install --destdir=../../debian/mpv
 
 # for manually installed dependencies
 override_dh_shlibdeps:
