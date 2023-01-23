@@ -39,10 +39,9 @@ statically linked with mpv when using the provided scripts, and no ffmpeg or
 libass libraries are/need to be installed. There are no required config or
 data files either.
 
-**Note**: Building mpv with meson (the default) requires a version of 0.63 or
-greater in order to use the ``prefer-static`` option. If you are on debian, you may
-need to install meson from backports in order to get a non-ancient version.
-Alternatively, you can install it from PyPi.
+**Note**: If you are on debian, you may need to install meson from backports
+in order to get a non-ancient version. Alternatively, you can install it from
+PyPi.
 
 Waf Support
 =============
