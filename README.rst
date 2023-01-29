@@ -208,7 +208,7 @@ mpv configure options
 Just like ``ffmpeg_options``, the file ``mpv_options`` in the
 mpv-build top-level directory can be used to set custom mpv configure
 options prior to compiling. Like with ffmpeg_option, it expects one
-switch per line (e.g. ``--enable-something``).
+switch per line (e.g. ``-Dsomething=enabled``).
 
 But normally, you shouldn't need this.
 
@@ -217,7 +217,7 @@ Building libmpv
 
 You can enable building libmpv by enabling the configure option::
 
-    printf "%s\n" --enable-libmpv-shared > mpv_options
+    printf "%s\n" -Dlibmpv=true > mpv_options
 
 Note that this will make the mpv-build scripts also enable PIC for all used
 libraries. For this reason, be sure to run ``./clean`` before rebuilding.
