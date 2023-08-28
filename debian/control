@@ -62,7 +62,6 @@ Build-Depends:
  libx264-dev,
  libx11-dev,
  libxext-dev,
- libxinerama-dev,
  libxkbcommon-dev,
  libxpresent-dev,
  libxrandr-dev,
