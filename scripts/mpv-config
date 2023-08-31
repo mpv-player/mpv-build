@@ -12,7 +12,10 @@ if test -f "$BUILD"/mpv_options ; then
 fi
 
 if "$BUILD"/scripts/test-libmpv; then
-    OPTIONS="-Dc_link_args='-Wl,-Bsymbolic'"
+    platform=$(uname | tr '[:upper:]' '[:lower:]')
+    case "$platform" in
+    *bsd*|*linux*|*solaris*) OPTIONS="-Dc_link_args='-Wl,-Bsymbolic'" ;;
+    esac
 fi
 
 case "$PKG_CONFIG_PATH" in
