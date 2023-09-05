@@ -11,13 +11,6 @@ if test -f "$BUILD"/mpv_options ; then
     unset -v IFS
 fi
 
-if "$BUILD"/scripts/test-libmpv; then
-    platform=$(uname | tr '[:upper:]' '[:lower:]')
-    case "$platform" in
-    *bsd*|*linux*|*solaris*) OPTIONS="-Dc_link_args='-Wl,-Bsymbolic'" ;;
-    esac
-fi
-
 case "$PKG_CONFIG_PATH" in
   '')
     export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig"
