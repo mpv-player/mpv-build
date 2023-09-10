@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-ninja install -C libplacebo/build "$@"
+ninja -C libplacebo/build "$@" install
