@@ -16,6 +16,7 @@ Build-Depends:
  libbs2b-dev,
  libcaca-dev,
  libcdio-paranoia-dev,
+ libdisplay-info-dev,
  libdrm-dev,
  libdav1d-dev,
  libdvdnav-dev,
