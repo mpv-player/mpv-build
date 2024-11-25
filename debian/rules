@@ -41,8 +41,6 @@ ffmpeg_config: libass_build libplacebo_build
 	scripts/ffmpeg-config \
 		--enable-gnutls \
 		--enable-libdav1d \
-		--enable-libgme \
-		--enable-libgsm \
 		--enable-libmodplug \
 		--enable-libmp3lame \
 		--enable-libopus \
