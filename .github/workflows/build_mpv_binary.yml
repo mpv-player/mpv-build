@@ -23,7 +23,7 @@ jobs:
         sudo apt install -y build-essential clang yasm git meson ninja-build \
              autoconf automake libtool pkg-config libfreetype6-dev libfribidi-dev \
              libfontconfig1-dev libasound2-dev pulseaudio libx11-dev libvdpau-dev \
-             libgl-dev libxv-dev libjpeg-dev libssl-dev libx264-dev libmp3lame-dev 
+             libgl-dev libxv-dev libjpeg-dev libssl-dev libx264-dev libmp3lame-dev \
              libfdk-aac-dev
 
     - name: Build mpv binary
