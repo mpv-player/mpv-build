@@ -71,7 +71,7 @@ jobs:
             libpulse-dev \
             libsndio-dev \
             libcaca-dev \
-            libdrm-dev \ 
+            libdrm-dev \
             libsixel-dev \
             wayland-protocols \
             libxkbcommon-dev \
