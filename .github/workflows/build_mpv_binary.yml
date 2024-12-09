@@ -20,11 +20,67 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y build-essential clang yasm git meson ninja-build \
-             autoconf automake libtool pkg-config libfreetype6-dev libfribidi-dev \
-             libfontconfig1-dev libasound2-dev pulseaudio libx11-dev libvdpau-dev \
-             libgl-dev libxv-dev libjpeg-dev libssl-dev libx264-dev libmp3lame-dev \
-             libfdk-aac-dev
+        sudo apt install -y \
+            build-essential \
+            clang \
+            yasm \
+            git \
+            meson \
+            ninja-build \
+            autoconf \
+            automake \
+            libtool \
+            pkg-config \
+            libfreetype6-dev \
+            libfribidi-dev \
+            libfontconfig1-dev \
+            libasound2-dev \
+            pulseaudio \
+            libx11-dev \
+            libxss-dev \
+            libvdpau-dev \
+            libgl-dev \
+            libxv-dev \
+            libjpeg-dev \
+            libssl-dev \
+            libx264-dev \
+            libmp3lame-dev \
+            libfdk-aac-dev \
+            python3-pip \
+            python3.12-venv \
+            libharfbuzz-dev \
+            nasm \
+            liblua5.1-0-dev \
+            liblua5.2-dev \
+            libxext-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxv-dev \
+            libwayland-dev \
+            nodejs \
+            libmujs-dev \
+            liblcms2-dev \
+            libarchive-dev \
+            libbluray-dev \
+            libavdevice-dev \
+            cmake \
+            libuchardet-dev \
+            libjack-dev \
+            libopenal-dev \
+            libpipewire-0.3-dev \
+            libpulse-dev \
+            libsndio-dev \
+            libcaca-dev \
+            libdrm-dev \ 
+            libsixel-dev \
+            wayland-protocols \
+            libxkbcommon-dev \
+            libxpresent-dev \
+            libegl1-mesa-dev \
+            libvulkan-dev \
+            libva-dev \
+            libshaderc-dev \
+            && apt clean
 
     - name: Build mpv binary
       run: |
