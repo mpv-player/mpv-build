@@ -86,7 +86,11 @@ jobs:
       run: |
         ./rebuild -j4
 
+    - name: Install mpv binary
+      run: |
+        sudo ./install
+
     - name: Verify mpv binary
       run: |
-        ./mpv/build/mpv --version
+        mpv --version
 
