@@ -1,4 +1,4 @@
-name: Build mpv binary
+name: Build mpv binary and create debian package
 
 on:
   push:
@@ -19,8 +19,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt update
-        sudo apt install -y \
+        sudo apt-get update
+        sudo apt-get install -y \
             build-essential \
             clang \
             yasm \
@@ -98,9 +98,9 @@ jobs:
       run: |
         # enable source repositories
         sudo sed -i 's/^Types: deb/Types: deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
-        sudo apt update
+        sudo apt-get update
         # install dependencies mentioned in debian/control
-        sudo apt install -y \
+        sudo apt-get install -y \
             ladspa-sdk \
             libbs2b-dev \
             libdisplay-info-dev \
@@ -125,7 +125,7 @@ jobs:
             && sudo apt clean
 
         # build dependencies
-        sudo apt build-dep mpv
+        sudo apt-get build-dep mpv
 
         # build package
         sudo dpkg-buildpackage -us -uc
