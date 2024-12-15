@@ -94,7 +94,7 @@ jobs:
       run: |
         mpv --version
 
-    - name: create debian package
+    - name: Create debian package
       run: |
         # enable source repositories
         sudo sed -i 's/^Types: deb/Types: deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
@@ -129,3 +129,11 @@ jobs:
 
         # build package
         sudo dpkg-buildpackage -us -uc
+
+        # check if package is created
+        if [ -f ../mpv*.deb ]; then
+            echo "mpv debian package creation is successful"
+        else
+            echo "mpv debian package creation failed!"
+            exit 1
+        fi
