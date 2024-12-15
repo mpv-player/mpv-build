@@ -80,7 +80,7 @@ jobs:
             libvulkan-dev \
             libva-dev \
             libshaderc-dev \
-            && sudo apt clean
+            && sudo apt-get clean
 
     - name: Build mpv binary
       run: |
@@ -122,7 +122,7 @@ jobs:
             libunwind-dev \
             libvpx-dev \
             libxvidcore-dev \
-            && sudo apt clean
+            && sudo apt-get clean
 
         # build dependencies
         sudo apt-get build-dep mpv
