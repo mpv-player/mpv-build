@@ -94,3 +94,38 @@ jobs:
       run: |
         mpv --version
 
+    - name: create debian package
+      run: |
+        # enable source repositories
+        sudo sed -i 's/^Types: deb/Types: deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
+        sudo apt update
+        # install dependencies mentioned in debian/control
+        sudo apt install -y \
+            ladspa-sdk \
+            libbs2b-dev \
+            libdisplay-info-dev \
+            libdav1d-dev \
+            libepoxy-dev \
+            libgl1-mesa-dev \
+            libgnutls28-dev \
+            libmodplug-dev \
+            libopus-dev \
+            libopencore-amrnb-dev \
+            libopencore-amrwb-dev \
+            librtmp-dev \
+            libssh-dev \
+            libsoxr-dev \
+            libspeex-dev \
+            libv4l-dev \
+            libvorbis-dev \
+            libvo-amrwbenc-dev \
+            libunwind-dev \
+            libvpx-dev \
+            libxvidcore-dev \
+            && sudo apt clean
+
+        # build dependencies
+        sudo apt build-dep mpv
+
+        # build package
+        sudo dpkg-buildpackage -us -uc
