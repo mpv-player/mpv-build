@@ -8,6 +8,7 @@ Build-Depends:
  automake,
  c-compiler | gcc,
  debhelper (>= 12),
+ debhelper-compat (= 12),
  glslang-dev,
  ladspa-sdk,
  libasound2-dev [linux-any],
