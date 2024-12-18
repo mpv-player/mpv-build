@@ -62,7 +62,6 @@ jobs:
             libpipewire-0.3-dev \
             libpulse-dev \
             libsndio-dev \
-            libcaca-dev \
             libdrm-dev \
             libsixel-dev \
             wayland-protocols \
