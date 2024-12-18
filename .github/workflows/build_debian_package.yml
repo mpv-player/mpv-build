@@ -79,9 +79,6 @@ jobs:
 
     - name: Create debian package
       run: |
-        # enable source repositories
-        sudo sed -i 's/^Types: deb/Types: deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
-
         # install build dependencies
         sudo apt-get install -y build-essential devscripts equivs
 
