@@ -42,9 +42,6 @@ jobs:
             libxv-dev \
             libjpeg-dev \
             libssl-dev \
-            libx264-dev \
-            libmp3lame-dev \
-            libfdk-aac-dev \
             libharfbuzz-dev \
             nasm \
             liblua5.2-dev \
