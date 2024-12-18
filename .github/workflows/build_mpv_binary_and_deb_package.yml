@@ -45,8 +45,6 @@ jobs:
             libx264-dev \
             libmp3lame-dev \
             libfdk-aac-dev \
-            python3-pip \
-            python3.12-venv \
             libharfbuzz-dev \
             nasm \
             liblua5.1-0-dev \
