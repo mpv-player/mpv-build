@@ -50,7 +50,6 @@ jobs:
             libxinerama-dev \
             libxv-dev \
             libwayland-dev \
-            nodejs \
             libmujs-dev \
             liblcms2-dev \
             libarchive-dev \
