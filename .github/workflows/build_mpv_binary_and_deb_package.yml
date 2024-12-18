@@ -113,6 +113,8 @@ jobs:
             libunwind-dev \
             libvpx-dev \
             libxvidcore-dev \
+            libmp3lame-dev \
+            libx264-dev \
             && sudo apt-get clean
 
         # build dependencies
