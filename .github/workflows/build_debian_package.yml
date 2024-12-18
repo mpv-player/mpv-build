@@ -88,3 +88,6 @@ jobs:
         # create debian package
         mk-build-deps -s sudo -i
 
+        # check if the package is created
+        ls mpv*.deb || exit 1
+
