@@ -130,9 +130,4 @@ jobs:
         sudo dpkg-buildpackage -us -uc
 
         # check if package is created
-        if [ -f ../mpv*.deb ]; then
-            echo "mpv debian package creation is successful"
-        else
-            echo "mpv debian package creation failed!"
-            exit 1
-        fi
+        ls -lh ../mpv*.deb || exit 1
