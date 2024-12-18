@@ -1,4 +1,4 @@
-name: Build mpv binary and create debian package
+name: Build debian package
 
 on:
   push:
@@ -77,51 +77,14 @@ jobs:
       run: |
         ./rebuild -j4
 
-    - name: Install mpv binary
-      run: |
-        sudo ./install
-
-    - name: Verify mpv binary
-      run: |
-        mpv --version
-
     - name: Create debian package
       run: |
         # enable source repositories
         sudo sed -i 's/^Types: deb/Types: deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
-        sudo apt-get update
-        # install dependencies mentioned in debian/control
-        sudo apt-get install -y \
-            ladspa-sdk \
-            libbs2b-dev \
-            libdisplay-info-dev \
-            libdav1d-dev \
-            libepoxy-dev \
-            libgl1-mesa-dev \
-            libgnutls28-dev \
-            libmodplug-dev \
-            libopus-dev \
-            libopencore-amrnb-dev \
-            libopencore-amrwb-dev \
-            librtmp-dev \
-            libssh-dev \
-            libsoxr-dev \
-            libspeex-dev \
-            libv4l-dev \
-            libvorbis-dev \
-            libvo-amrwbenc-dev \
-            libunwind-dev \
-            libvpx-dev \
-            libxvidcore-dev \
-            libmp3lame-dev \
-            libx264-dev \
-            && sudo apt-get clean
 
-        # build dependencies
-        sudo apt-get build-dep mpv
+        # install build dependencies
+        sudo apt-get install -y build-essential devscripts equivs
 
-        # build package
-        sudo dpkg-buildpackage -us -uc
+        # create debian package
+        mk-build-deps -s sudo -i
 
-        # check if package is created
-        ls -lh ../mpv*.deb || exit 1
