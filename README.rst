@@ -204,12 +204,9 @@ But normally, you shouldn't need this.
 Building libmpv
 ---------------
 
-You can enable building libmpv by enabling the configure option::
+libmpv is built by default, but you can disable it in the configure option::
 
-    printf "%s\n" -Dlibmpv=true > mpv_options
-
-Note that this will make the mpv-build scripts also enable PIC for all used
-libraries. For this reason, be sure to run ``./clean`` before rebuilding.
+    printf "%s\n" -Dlibmpv=false > mpv_options
 
 The Debian packaging scripts do not currently support libmpv.
 
