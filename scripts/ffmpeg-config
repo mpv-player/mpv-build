@@ -13,10 +13,7 @@ if test -f "$BUILD"/ffmpeg_options ; then
     unset -v IFS
 fi
 
-OPTIONS="--enable-gpl --disable-debug --disable-doc --enable-static --disable-shared"
-if "$BUILD"/scripts/test-libmpv ; then
-    OPTIONS="$OPTIONS --enable-pic"
-fi
+OPTIONS="--enable-gpl --disable-debug --disable-doc --enable-static --disable-shared --enable-pic"
 
 # Do FFmpeg's job.
 if ( echo "$OPTIONS" "$@" | \

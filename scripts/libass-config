@@ -10,10 +10,7 @@ if test -f "$BUILD"/libass_options ; then
     unset -v IFS
 fi
 
-OPTIONS="--enable-static --disable-shared"
-if "$BUILD"/scripts/test-libmpv ; then
-    OPTIONS="$OPTIONS --with-pic"
-fi
+OPTIONS="--enable-static --disable-shared --with-pic"
 
 case "$PKG_CONFIG_PATH" in
   '')
