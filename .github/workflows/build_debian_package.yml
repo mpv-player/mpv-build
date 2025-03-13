@@ -83,5 +83,6 @@ jobs:
         dpkg-buildpackage -uc -us -b -j4
 
     - name: Verify package creation
+      run: |
         ls ../mpv_*.deb || exit 1
 
