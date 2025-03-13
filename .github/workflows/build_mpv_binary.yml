@@ -71,7 +71,6 @@ jobs:
             libvulkan-dev \
             libva-dev \
             libshaderc-dev \
-            libmpv-dev \
             && sudo apt-get clean
 
     - name: Build mpv binary
