@@ -73,18 +73,15 @@ jobs:
             libshaderc-dev \
             && sudo apt-get clean
 
-    - name: Build mpv binary
+    - name: Prepare Debian package
       run: |
-        ./rebuild -j4
-
-    - name: Create debian package
-      run: |
-        # install build dependencies
-        sudo apt-get install -y devscripts equivs
-
-        # create debian package
+        ./update.sh
         mk-build-deps -s sudo -i
 
-        # check if the package is created
-        ls mpv*.deb || exit 1
+    - name: Build Debian package
+      run: |
+        dpkg-buildpackage -uc -us -b -j4
+
+    - name: Verify package creation
+        ls ../mpv_*.deb || exit 1
 
