@@ -72,6 +72,7 @@ jobs:
             libva-dev \
             libshaderc-dev \
             devscripts \
+            equivs \
             && sudo apt-get clean
 
     - name: Print working directory
