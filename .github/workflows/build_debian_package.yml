@@ -73,6 +73,9 @@ jobs:
             libshaderc-dev \
             && sudo apt-get clean
 
+    - name: Print working directory
+      run: pwd
+
     - name: Prepare Debian package
       run: |
         ./update.sh
