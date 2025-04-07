@@ -71,6 +71,7 @@ jobs:
             libvulkan-dev \
             libva-dev \
             libshaderc-dev \
+            devscripts \
             && sudo apt-get clean
 
     - name: Print working directory
