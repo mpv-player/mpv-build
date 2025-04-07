@@ -78,7 +78,7 @@ jobs:
 
     - name: Prepare Debian package
       run: |
-        ./update.sh
+        ./update
         mk-build-deps -s sudo -i
 
     - name: Build Debian package
