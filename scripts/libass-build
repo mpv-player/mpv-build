@@ -1,7 +1,4 @@
 #!/bin/sh
 set -e
 
-# set CFLAGS to ensure position-independent code
-export CFLAGS="-fPIC"
-
 make -C libass install "$@"
