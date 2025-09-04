@@ -82,7 +82,7 @@ jobs:
 
     - name: Build Debian package
       run: |
-        dpkg-buildpackage -uc -us -b -j4
+        dpkg-buildpackage -uc -us -b -j`nproc`
 
     - name: Verify package creation
       run: |
