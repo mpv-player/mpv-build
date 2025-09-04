@@ -74,7 +74,7 @@ jobs:
 
     - name: Build mpv binary
       run: |
-        ./rebuild -j4
+        ./rebuild -j`nproc`
 
     - name: Verify mpv binary
       run: |
