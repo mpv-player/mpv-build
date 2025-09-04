@@ -70,8 +70,7 @@ jobs:
             libegl1-mesa-dev \
             libvulkan-dev \
             libva-dev \
-            libshaderc-dev \
-            && sudo apt-get clean
+            libshaderc-dev
 
     - name: Build mpv binary
       run: |
