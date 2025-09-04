@@ -68,8 +68,7 @@ jobs:
             libva-dev \
             libshaderc-dev \
             devscripts \
-            equivs \
-            && sudo apt-get clean
+            equivs
 
     - name: Prepare Debian package
       run: |
