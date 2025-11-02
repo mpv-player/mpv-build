@@ -44,7 +44,6 @@ Build-Depends:
  libpulse-dev,
  librtmp-dev,
  librubberband-dev,
- libsdl2-dev,
  libsixel-dev,
  libssh-dev,
  libsoxr-dev,
