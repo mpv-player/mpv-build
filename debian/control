@@ -44,7 +44,6 @@ Build-Depends:
  libpulse-dev,
  librtmp-dev,
  librubberband-dev,
- libsdl2-dev,
  libsixel-dev,
  libssh-dev,
  libsoxr-dev,
@@ -89,8 +88,8 @@ Recommends:
  mesa-vdpau-drivers | nvidia-vdpau-driver | nvidia-driver-binary | nvidia-current | vdpau-driver
 Suggests: libaacs0
 Description: mplayer/mplayer2 based video player
- MPV is a versatile CLI movie player, based on mplayer and mplayer2.
+ mpv is a versatile CLI media player, based on mplayer and mplayer2.
  .
  This package is not part of Debian. It was created by mpv-build scripts with
  statically linked ffmpeg, libass and libplacebo from upstream.
-Homepage:https://github.com/mpv-player/mpv-build
+Homepage: https://github.com/mpv-player/mpv-build

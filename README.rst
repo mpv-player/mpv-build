@@ -52,7 +52,7 @@ Essential dependencies (incomplete list):
 - autoconf/autotools (for libass)
 - X development headers (xlib, X extensions, vdpau, GL, Xv, ...)
 - Audio output development headers (libasound, pulseaudio)
-- fribidi, freetype, fontconfig development headers (for libass)
+- fribidi, freetype, fontconfig, harfbuzz development headers (for libass)
 - libjpeg
 - OpenSSL or GnuTLS development headers if you want to open https links
   (this is also needed to make youtube-dl interaction work)
