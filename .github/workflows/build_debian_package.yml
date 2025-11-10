@@ -17,60 +17,10 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install --no-install-recommends -y \
-            build-essential \
-            yasm \
-            git \
-            meson \
-            ninja-build \
-            autoconf \
-            automake \
-            libtool \
-            pkg-config \
-            libfreetype6-dev \
-            libfribidi-dev \
-            libfontconfig1-dev \
-            libasound2-dev \
-            pulseaudio \
-            libx11-dev \
-            libxss-dev \
-            libvdpau-dev \
-            libgl-dev \
-            libxv-dev \
-            libjpeg-dev \
-            libssl-dev \
-            libharfbuzz-dev \
-            nasm \
-            liblua5.2-dev \
-            libxext-dev \
-            libxrandr-dev \
-            libxinerama-dev \
-            libxv-dev \
-            libwayland-dev \
-            libmujs-dev \
-            liblcms2-dev \
-            libarchive-dev \
-            libbluray-dev \
-            libavdevice-dev \
-            cmake \
-            libuchardet-dev \
-            libjack-dev \
-            libopenal-dev \
-            libpipewire-0.3-dev \
-            libpulse-dev \
-            libsndio-dev \
-            libdrm-dev \
-            libsixel-dev \
-            wayland-protocols \
-            libxkbcommon-dev \
-            libxpresent-dev \
-            libegl1-mesa-dev \
-            libvulkan-dev \
-            libva-dev \
-            libshaderc-dev \
             devscripts \
             equivs
 
-    - name: Prepare Debian package
+    - name: Install build dependencies from debian/control
       run: |
         ./update
         mk-build-deps -s sudo -i
