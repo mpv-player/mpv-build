@@ -31,5 +31,5 @@ jobs:
 
     - name: Verify package creation
       run: |
-        ls ../mpv_*.deb || exit 1
+        ls -lh ../mpv_*.deb || exit 1
 
