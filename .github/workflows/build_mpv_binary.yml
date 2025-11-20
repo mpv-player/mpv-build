@@ -1,0 +1,82 @@
+name: Build mpv binary
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+            build-essential \
+            yasm \
+            git \
+            meson \
+            ninja-build \
+            autoconf \
+            automake \
+            libtool \
+            pkg-config \
+            libfreetype6-dev \
+            libfribidi-dev \
+            libfontconfig1-dev \
+            libasound2-dev \
+            pulseaudio \
+            libx11-dev \
+            libxss-dev \
+            libvdpau-dev \
+            libgl-dev \
+            libxv-dev \
+            libjpeg-dev \
+            libssl-dev \
+            libharfbuzz-dev \
+            nasm \
+            liblua5.2-dev \
+            libxext-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxv-dev \
+            libwayland-dev \
+            libmujs-dev \
+            liblcms2-dev \
+            libarchive-dev \
+            libbluray-dev \
+            libavdevice-dev \
+            cmake \
+            libuchardet-dev \
+            libjack-dev \
+            libopenal-dev \
+            libpipewire-0.3-dev \
+            libpulse-dev \
+            libsndio-dev \
+            libdrm-dev \
+            libsixel-dev \
+            wayland-protocols \
+            libxkbcommon-dev \
+            libxpresent-dev \
+            libegl1-mesa-dev \
+            libvulkan-dev \
+            libva-dev \
+            libshaderc-dev
+
+    - name: Build mpv binary
+      run: |
+        ./rebuild -j`nproc`
+
+    - name: Verify mpv binary
+      run: |
+        ./mpv/build/mpv --version || exit 1
+

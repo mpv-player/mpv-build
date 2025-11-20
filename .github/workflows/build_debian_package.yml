@@ -1,0 +1,35 @@
+name: Build debian package
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install --no-install-recommends -y \
+            devscripts \
+            equivs
+
+    - name: Install build dependencies from debian/control
+      run: |
+        ./update
+        mk-build-deps -s sudo -i
+
+    - name: Build Debian package
+      run: |
+        dpkg-buildpackage -uc -us -b -j`nproc`
+
+    - name: Verify package creation
+      run: |
+        ls -lh ../mpv_*.deb || exit 1
+
